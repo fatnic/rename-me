@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://entities/fuel_cell_small.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/level_001.tscn" type="PackedScene" id=2]
+[ext_resource path="res://entities/ship_one.tscn" type="PackedScene" id=3]
+
+[node name="main" type="Node2D"]
+
+[node name="fuel_cell_small" parent="." index="0" instance=ExtResource( 1 )]
+
+position = Vector2( 102, 333 )
+
+[node name="fuel_cell_small2" parent="." index="1" instance=ExtResource( 1 )]
+
+position = Vector2( 312.102, 269.34 )
+
+[node name="fuel_cell_small3" parent="." index="2" instance=ExtResource( 1 )]
+
+position = Vector2( 520.416, 220.91 )
+
+[node name="level_001" parent="." index="3" instance=ExtResource( 2 )]
+
+_sections_unfolded = [ "Material", "Visibility", "Z Index" ]
+
+[node name="ship_one" parent="." index="4" instance=ExtResource( 3 )]
+
+position = Vector2( 152, 332 )
+
+
