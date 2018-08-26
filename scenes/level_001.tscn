@@ -34,7 +34,9 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="environment" type="TileMap" parent="." index="1"]
+[node name="environment" type="TileMap" parent="." index="1" groups=[
+"environment",
+]]
 
 z_index = 50
 mode = 0

@@ -1,16 +1,17 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scripts/fuel_cell_small.gd" type="Script" id=1]
 [ext_resource path="res://assets/images/fuel_cell_small.png" type="Texture" id=2]
 [ext_resource path="res://assets/images/lighting.png" type="Texture" id=3]
 [ext_resource path="res://entities/nodes/interactable.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/sounds/pour.ogg" type="AudioStream" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
 extents = Vector2( 1.5, 1.5 )
 
-[node name="fuel_cell_small" type="RigidBody2D" groups=[
+[node name="fuel_cell_small" type="RigidBody2D" index="0" groups=[
 "fuel",
 "explosive",
 ]]
@@ -20,9 +21,9 @@ input_pickable = false
 collision_layer = 4
 collision_mask = 5
 mode = 0
-mass = 0.5
+mass = 0.7
 friction = 1.0
-bounce = 0.3
+bounce = 0.2
 gravity_scale = 1.0
 custom_integrator = false
 continuous_cd = 0
@@ -90,6 +91,15 @@ playback/active = false
 playback/repeat = false
 playback/speed = 1.0
 _sections_unfolded = [ "playback" ]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="5"]
+
+stream = ExtResource( 5 )
+volume_db = -5.0
+pitch_scale = 1.0
+autoplay = false
+mix_target = 0
+bus = "Master"
 
 [connection signal="tween_completed" from="tween" to="." method="_on_tween_tween_completed"]
 

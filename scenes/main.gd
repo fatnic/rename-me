@@ -4,9 +4,14 @@ var scn_explosion = load("res://entities/explosion.tscn")
 
 func _ready():
 	add_signals_from_group("explosive", self, "spawn_explosion")
+	$AudioStreamPlayer.play()
 
 
-func spawn_explosion(pos, power, scl = 1.0):
+func _process(delta):
+	update()
+
+
+func spawn_explosion(pos, power = 20, scl = 1.0):
 	var explosion = scn_explosion.instance()
 	explosion.position = pos
 	explosion.get_node("aoe/CollisionShape2D").shape.radius = power
@@ -17,3 +22,8 @@ func spawn_explosion(pos, power, scl = 1.0):
 func add_signals_from_group(group_name, target, method):
 	for item in get_tree().get_nodes_in_group(group_name):
 		item.connect(method, target, method)	
+		
+		
+func _draw():
+	if $ship_one.grappling:
+		draw_line($ship_one.position, $ship_one.grappling.position, Color(0.501, 0.313, 0.176, 1.0), 1.0)

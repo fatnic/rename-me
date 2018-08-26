@@ -219,4 +219,13 @@ autoplay = false
 mix_target = 0
 bus = "Master"
 
+[node name="tween" type="Tween" parent="." index="9"]
+
+repeat = false
+playback_process_mode = 1
+playback_speed = 1.0
+playback/active = false
+playback/repeat = false
+playback/speed = 1.0
+
 

@@ -1,7 +1,5 @@
 extends RigidBody2D
 
-
-
 ## Interactable variables
 export (int) var interact_radius = 8
 export (bool) var collect = true
@@ -17,14 +15,13 @@ func _physics_process(delta):
 	if get_colliding_bodies().size() > 0:
 	
 		if fuel_amount > 0 and linear_velocity.length() > 30:
-		
 			if grappled_by: grappled_by.call("release_grapple")
 			explode()
 					
 
 func explode():
-	emit_signal("spawn_explosion", global_position, 20, 0.5)
-	queue_free()
+		emit_signal("spawn_explosion", global_position, 20, 0.3)
+		queue_free()
 	
 
 func on_collect(collector):
@@ -32,9 +29,11 @@ func on_collect(collector):
 	if collector.has_method("add_fuel"):
 		collector.call_deferred("add_fuel", fuel_amount)
 		fuel_amount = 0
+		remove_from_group("explosive")
 		$interactable.collect = false
 		$tween.interpolate_property($glow, "energy", 1.5, 0.01, 1.0, Tween.TRANS_LINEAR, Tween.EASE_IN)
 		$tween.start()
+		$AudioStreamPlayer.play()
 		
 
 func on_grapple(grappler):

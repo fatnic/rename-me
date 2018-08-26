@@ -8,10 +8,15 @@ export (int) var fuel = 100
 export (int) var max_fuel = 100
 
 var grappling = null
+var grounded = true
 
 
 func _physics_process(delta):
-	
+
+#	for body in get_colliding_bodies():
+#		if body.is_in_group("environment"):
+#			grounded = true
+
 	if Input.is_action_pressed("thrust"):
 		thrust()
 	
@@ -34,10 +39,16 @@ func _physics_process(delta):
 			grappling = null
 			$grapple.node_b = ""
 			$grapple_off_sound.play()
+			
 		
-	if Input.is_action_pressed("reset"):
-		rotation = 0
+	if grounded and Input.is_action_pressed("reset"):
+		$tween.interpolate_property(self, "rotation", rotation, 0, 0.6, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+		$tween.start()
+		
 
+func _process(delta):
+	update()
+		
 
 func rotate_ship(direction):
 	angular_velocity = direction * turn_speed
@@ -72,4 +83,5 @@ func release_grapple():
 		grappling.grappled_by = null
 		grappling = null
 		
-		
+
+

@@ -9,6 +9,7 @@ custom_solver_bias = 0.0
 extents = Vector2( 8, 8 )
 
 [node name="block_destructable" type="RigidBody2D" groups=[
+"environment",
 "destructable",
 ]]
 
