@@ -75,7 +75,7 @@ anim_offset_random = 0.0
 anim_loop = false
 _sections_unfolded = [ "Color" ]
 
-[node name="ship_one" type="RigidBody2D"]
+[node name="ship_one" type="RigidBody2D" index="0"]
 
 light_mask = 2
 input_pickable = false
@@ -101,6 +101,8 @@ _sections_unfolded = [ "Collision", "Visibility" ]
 thrust = 16
 max_thrust = 100
 turn_speed = 0.5
+fuel = 100
+max_fuel = 100
 
 [node name="Sprite" type="Sprite" parent="." index="0"]
 
@@ -182,5 +184,17 @@ enabled = true
 exclude_parent = true
 cast_to = Vector2( 0, 10 )
 collision_mask = 1
+
+[node name="grapple" type="DampedSpringJoint2D" parent="." index="6"]
+
+position = Vector2( 0, 3 )
+node_a = NodePath("..")
+node_b = NodePath("")
+bias = 0.0
+disable_collision = true
+length = 20.0
+rest_length = 0.0
+stiffness = 10.0
+damping = 1.0
 
 

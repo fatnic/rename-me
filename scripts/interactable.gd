@@ -30,9 +30,11 @@ func _physics_process(delta):
 		if interacting:
 			
 			if collect and Input.is_action_just_pressed("collect"):
+				print("%s is collecting %s" % [interacting.get_name(), parent.get_name()])
 				parent.call_deferred("on_collect", interacting)
 			
-			if grapple and Input.is_action_just_pressed("grapple"):
+			if grapple and not interacting.grappling and Input.is_action_just_pressed("grapple"):
+				print("%s is grappling %s" % [interacting.get_name(), parent.get_name()])
 				parent.call_deferred("on_grapple", interacting)
 				
 		

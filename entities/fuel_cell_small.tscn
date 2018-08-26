@@ -38,6 +38,7 @@ _sections_unfolded = [ "Collision", "Visibility" ]
 interact_radius = 8
 collect = true
 grapple = true
+fuel_amount = 10
 
 [node name="sprite" type="Sprite" parent="." index="0"]
 
@@ -50,7 +51,7 @@ _sections_unfolded = [ "Visibility" ]
 visible = false
 shape = SubResource( 1 )
 
-[node name="Light2D" type="Light2D" parent="." index="2"]
+[node name="glow" type="Light2D" parent="." index="2"]
 
 enabled = true
 editor_only = false
@@ -58,14 +59,14 @@ texture = ExtResource( 3 )
 offset = Vector2( 0, 0 )
 texture_scale = 0.3
 color = Color( 0.39494, 0.976562, 0.0686646, 1 )
-energy = 1.1
+energy = 1.5
 mode = 0
 range_height = 0.0
 range_z_min = -1024
 range_z_max = 1024
 range_layer_min = 0
 range_layer_max = 0
-range_item_cull_mask = 3
+range_item_cull_mask = 11
 shadow_enabled = false
 shadow_color = Color( 0, 0, 0, 0 )
 shadow_buffer_size = 2048
@@ -76,5 +77,17 @@ shadow_item_cull_mask = 1
 _sections_unfolded = [ "Range", "Visibility" ]
 
 [node name="interactable" parent="." index="3" instance=ExtResource( 4 )]
+
+[node name="tween" type="Tween" parent="." index="4"]
+
+repeat = false
+playback_process_mode = 1
+playback_speed = 1.0
+playback/active = false
+playback/repeat = false
+playback/speed = 1.0
+_sections_unfolded = [ "playback" ]
+
+[connection signal="tween_completed" from="tween" to="." method="_on_tween_tween_completed"]
 
 

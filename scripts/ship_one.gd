@@ -4,6 +4,11 @@ export (int) var thrust = 22
 export (int) var max_thrust = 100
 export (float) var turn_speed = 0.8
 
+export (int) var fuel = 100
+export (int) var max_fuel = 100
+
+var grappling = null
+
 
 func _physics_process(delta):
 	
@@ -21,6 +26,13 @@ func _physics_process(delta):
 	if Input.is_action_pressed("turn_right"):
 		rotate_ship(1)
 		
+	if Input.is_action_just_pressed("grapple"):
+		if grappling:
+			print("%s is releasing %s" % [get_name(), grappling.get_name()])
+			grappling.grapple = true
+			grappling = null
+			$grapple.node_b = ""
+		
 	if Input.is_action_pressed("reset"):
 		rotation = 0
 
@@ -35,3 +47,15 @@ func thrust():
 	$exhaust_flame.emitting = true
 	$exhaust_glow.enabled = true
 	
+	
+func add_fuel(amount):
+	print("%s has received %d fuel" % [self.get_name(), amount])
+	
+	
+func grapple_object(object):
+	
+	if not grappling:
+		print("%s has grappled %s" % [self.get_name(), object.get_name()])
+		grappling = object
+		$grapple.node_b = object.get_path()
+		object.grapple = false

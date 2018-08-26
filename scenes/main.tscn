@@ -4,15 +4,24 @@
 [ext_resource path="res://scenes/level_001.tscn" type="PackedScene" id=2]
 [ext_resource path="res://entities/ship_one.tscn" type="PackedScene" id=3]
 
-[node name="main" type="Node2D" index="0"]
+[node name="main" type="Node2D"]
 
 [node name="interactables" type="Node2D" parent="." index="0"]
-
-editor/display_folded = true
 
 [node name="fuel_cell_small" parent="interactables" index="0" instance=ExtResource( 1 )]
 
 position = Vector2( 102, 333 )
+interact_radius = 16
+
+[node name="fuel_cell_small2" parent="interactables" index="1" instance=ExtResource( 1 )]
+
+position = Vector2( 323.58, 128.001 )
+interact_radius = 16
+
+[node name="fuel_cell_small3" parent="interactables" index="2" instance=ExtResource( 1 )]
+
+position = Vector2( 432.108, 147.597 )
+interact_radius = 16
 
 [node name="level_001" parent="." index="1" instance=ExtResource( 2 )]
 
