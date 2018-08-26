@@ -1,25 +1,63 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://assets/images/fuel_cell_small.png" type="Texture" id=1]
-[ext_resource path="res://assets/images/lighting.png" type="Texture" id=2]
+[ext_resource path="res://entities/fuel_cell_small.gd" type="Script" id=1]
+[ext_resource path="res://assets/images/fuel_cell_small.png" type="Texture" id=2]
+[ext_resource path="res://assets/images/lighting.png" type="Texture" id=3]
+[ext_resource path="res://entities/nodes/interactable.tscn" type="PackedScene" id=4]
 
-[node name="fuel_cell_small" type="Sprite"]
+[sub_resource type="RectangleShape2D" id=1]
 
-show_behind_parent = true
+custom_solver_bias = 0.0
+extents = Vector2( 1.5, 1.5 )
+
+[node name="fuel_cell_small" type="RigidBody2D" groups=[
+"fuel",
+]]
+
 light_mask = 4
-texture = ExtResource( 1 )
-offset = Vector2( 0.5, 0.5 )
-_sections_unfolded = [ "Offset", "Visibility" ]
+input_pickable = false
+collision_layer = 4
+collision_mask = 5
+mode = 0
+mass = 1.0
+friction = 1.0
+bounce = 0.0
+gravity_scale = 1.0
+custom_integrator = false
+continuous_cd = 0
+contacts_reported = 0
+contact_monitor = false
+sleeping = false
+can_sleep = true
+linear_velocity = Vector2( 0, 0 )
+linear_damp = -1.0
+angular_velocity = 0.0
+angular_damp = -1.0
+script = ExtResource( 1 )
+_sections_unfolded = [ "Collision", "Visibility" ]
+interact_radius = 8
+collect = true
+grapple = true
 
-[node name="Light2D" type="Light2D" parent="." index="0"]
+[node name="sprite" type="Sprite" parent="." index="0"]
 
-light_mask = 3
+light_mask = 4
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Visibility" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
+
+visible = false
+shape = SubResource( 1 )
+
+[node name="Light2D" type="Light2D" parent="." index="2"]
+
 enabled = true
 editor_only = false
-texture = ExtResource( 2 )
+texture = ExtResource( 3 )
 offset = Vector2( 0, 0 )
-texture_scale = 0.4
-color = Color( 0.350442, 0.941406, 0.0514832, 1 )
+texture_scale = 0.3
+color = Color( 0.39494, 0.976562, 0.0686646, 1 )
 energy = 1.1
 mode = 0
 range_height = 0.0
@@ -27,7 +65,7 @@ range_z_min = -1024
 range_z_max = 1024
 range_layer_min = 0
 range_layer_max = 0
-range_item_cull_mask = 1
+range_item_cull_mask = 3
 shadow_enabled = false
 shadow_color = Color( 0, 0, 0, 0 )
 shadow_buffer_size = 2048
@@ -35,6 +73,8 @@ shadow_gradient_length = 0.0
 shadow_filter = 0
 shadow_filter_smooth = 0.0
 shadow_item_cull_mask = 1
-_sections_unfolded = [ "Visibility" ]
+_sections_unfolded = [ "Range", "Visibility" ]
+
+[node name="interactable" parent="." index="3" instance=ExtResource( 4 )]
 
 

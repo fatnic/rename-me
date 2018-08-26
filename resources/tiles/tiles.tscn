@@ -249,7 +249,6 @@ light_mask = 1
 
 [node name="rock_bottom_right" type="Sprite" parent="." index="8"]
 
-editor/display_folded = true
 position = Vector2( 8, 40 )
 texture = ExtResource( 1 )
 region_enabled = true
@@ -258,7 +257,6 @@ _sections_unfolded = [ "Region" ]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="rock_bottom_right" index="0"]
 
-editor/display_folded = true
 input_pickable = false
 collision_layer = 1
 collision_mask = 1
@@ -267,9 +265,10 @@ constant_angular_velocity = 0.0
 friction = 1.0
 bounce = 0.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="rock_bottom_right/StaticBody2D" index="0"]
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="rock_bottom_right/StaticBody2D" index="0"]
 
-shape = SubResource( 4 )
+build_mode = 0
+polygon = PoolVector2Array( -8, -8, 8, -8, 8, 8, 0, 8, -8, 0 )
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="rock_bottom_right" index="1"]
 
@@ -278,7 +277,6 @@ light_mask = 1
 
 [node name="rock_bottom_middle" type="Sprite" parent="." index="9"]
 
-editor/display_folded = true
 position = Vector2( 24, 40 )
 texture = ExtResource( 1 )
 region_enabled = true
@@ -334,36 +332,7 @@ shape = SubResource( 4 )
 occluder = SubResource( 3 )
 light_mask = 1
 
-[node name="rock_bottom_left" type="Sprite" parent="." index="11"]
-
-editor/display_folded = true
-position = Vector2( 56, 40 )
-texture = ExtResource( 1 )
-region_enabled = true
-region_rect = Rect2( 48, 64, 16, 16 )
-_sections_unfolded = [ "Region" ]
-
-[node name="StaticBody2D" type="StaticBody2D" parent="rock_bottom_left" index="0"]
-
-editor/display_folded = true
-input_pickable = false
-collision_layer = 1
-collision_mask = 1
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 1.0
-bounce = 0.0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="rock_bottom_left/StaticBody2D" index="0"]
-
-shape = SubResource( 4 )
-
-[node name="LightOccluder2D" type="LightOccluder2D" parent="rock_bottom_left" index="1"]
-
-occluder = SubResource( 3 )
-light_mask = 1
-
-[node name="rock_floor_single" type="Sprite" parent="." index="12"]
+[node name="rock_floor_single" type="Sprite" parent="." index="11"]
 
 editor/display_folded = true
 position = Vector2( 80, 8 )
@@ -392,7 +361,7 @@ shape = SubResource( 4 )
 occluder = SubResource( 3 )
 light_mask = 1
 
-[node name="rock_horizontal_middle" type="Sprite" parent="." index="13"]
+[node name="rock_horizontal_middle" type="Sprite" parent="." index="12"]
 
 editor/display_folded = true
 position = Vector2( 80, 24 )
@@ -421,9 +390,8 @@ shape = SubResource( 4 )
 occluder = SubResource( 3 )
 light_mask = 1
 
-[node name="rock_horizontal_bottom" type="Sprite" parent="." index="14"]
+[node name="rock_horizontal_bottom" type="Sprite" parent="." index="13"]
 
-editor/display_folded = true
 position = Vector2( 80, 40 )
 texture = ExtResource( 1 )
 region_enabled = true
@@ -432,7 +400,6 @@ _sections_unfolded = [ "Region" ]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="rock_horizontal_bottom" index="0"]
 
-editor/display_folded = true
 input_pickable = false
 collision_layer = 1
 collision_mask = 1
@@ -441,16 +408,17 @@ constant_angular_velocity = 0.0
 friction = 1.0
 bounce = 0.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="rock_horizontal_bottom/StaticBody2D" index="0"]
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="rock_horizontal_bottom/StaticBody2D" index="0"]
 
-shape = SubResource( 4 )
+build_mode = 0
+polygon = PoolVector2Array( -8, -8, 8, -8, 8, 3, 3, 8, -3, 8, -8, 3 )
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="rock_horizontal_bottom" index="1"]
 
 occluder = SubResource( 3 )
 light_mask = 1
 
-[node name="bg" type="Sprite" parent="." index="15"]
+[node name="bg" type="Sprite" parent="." index="14"]
 
 position = Vector2( 8, 64 )
 texture = ExtResource( 1 )
@@ -458,7 +426,7 @@ region_enabled = true
 region_rect = Rect2( 16, 48, 16, 16 )
 _sections_unfolded = [ "Region" ]
 
-[node name="bg2" type="Sprite" parent="." index="16"]
+[node name="bg2" type="Sprite" parent="." index="15"]
 
 position = Vector2( 24, 64 )
 texture = ExtResource( 1 )

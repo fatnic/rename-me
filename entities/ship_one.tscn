@@ -4,7 +4,7 @@
 [ext_resource path="res://assets/images/ship_one.png" type="Texture" id=2]
 [ext_resource path="res://assets/images/lighting.png" type="Texture" id=3]
 [ext_resource path="res://scripts/exhaust_glow.gd" type="Script" id=4]
-[ext_resource path="res://assets/sounds/rocket.ogg" type="AudioStream" id=5]
+[ext_resource path="res://assets/sounds/thrust_sound.ogg" type="AudioStream" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -77,9 +77,10 @@ _sections_unfolded = [ "Color" ]
 
 [node name="ship_one" type="RigidBody2D"]
 
+light_mask = 2
 input_pickable = false
-collision_layer = 1
-collision_mask = 1
+collision_layer = 2
+collision_mask = 9
 mode = 0
 mass = 8.0
 friction = 1.0
@@ -96,19 +97,20 @@ linear_damp = -1.0
 angular_velocity = 0.0
 angular_damp = -1.0
 script = ExtResource( 1 )
-_sections_unfolded = [ "Visibility" ]
-thrust = 18
+_sections_unfolded = [ "Collision", "Visibility" ]
+thrust = 16
 max_thrust = 100
 turn_speed = 0.5
 
 [node name="Sprite" type="Sprite" parent="." index="0"]
 
-light_mask = 3
+light_mask = 2
 texture = ExtResource( 2 )
 _sections_unfolded = [ "Visibility" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
 
+visible = false
 shape = SubResource( 1 )
 
 [node name="exhaust_flame" type="Particles2D" parent="." index="2"]
@@ -138,12 +140,13 @@ _sections_unfolded = [ "Drawing", "Time", "Visibility" ]
 
 [node name="exhaust_glow" type="Light2D" parent="." index="3"]
 
+light_mask = 0
 position = Vector2( 0, 3 )
 enabled = false
 editor_only = false
 texture = ExtResource( 3 )
 offset = Vector2( 0, 0 )
-texture_scale = 3.0
+texture_scale = 1.0
 color = Color( 0.954372, 0.972656, 0.387543, 1 )
 energy = 1.8
 mode = 0
@@ -152,7 +155,7 @@ range_z_min = -1024
 range_z_max = 1024
 range_layer_min = 0
 range_layer_max = 0
-range_item_cull_mask = 1
+range_item_cull_mask = 13
 shadow_enabled = false
 shadow_color = Color( 0, 0, 0, 0.75898 )
 shadow_buffer_size = 2048
@@ -161,15 +164,23 @@ shadow_filter = 0
 shadow_filter_smooth = 0.0
 shadow_item_cull_mask = 2
 script = ExtResource( 4 )
-_sections_unfolded = [ "Shadow", "Visibility" ]
+_sections_unfolded = [ "Range" ]
 
 [node name="exhaust_sound" type="AudioStreamPlayer" parent="." index="4"]
 
 stream = ExtResource( 5 )
-volume_db = -10.0
-pitch_scale = 0.7
+volume_db = 0.0
+pitch_scale = 1.0
 autoplay = false
 mix_target = 0
 bus = "Master"
+
+[node name="exhaust_heat" type="RayCast2D" parent="." index="5"]
+
+visible = false
+enabled = true
+exclude_parent = true
+cast_to = Vector2( 0, 10 )
+collision_mask = 1
 
 

@@ -56,8 +56,22 @@ turn_right=[ Object(InputEventKey,"resource_local_to_scene":false,"resource_name
  ]
 reset=[ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":82,"unicode":0,"echo":false,"script":null)
  ]
+collect=[ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":75,"unicode":0,"echo":false,"script":null)
+ ]
+grapple=[ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":74,"unicode":0,"echo":false,"script":null)
+ ]
+
+[layer_names]
+
+2d_render/layer_1="map"
+2d_physics/layer_1="environment"
+2d_render/layer_2="player"
+2d_physics/layer_2="player"
+2d_render/layer_3="pickups"
+2d_physics/layer_3="pickups"
+2d_render/layer_4="background"
+2d_physics/layer_4="interactable"
 
 [rendering]
 
-environment/default_clear_color=Color( 0.143869, 0.0959473, 0.1875, 1 )
 environment/default_environment="res://default_env.tres"

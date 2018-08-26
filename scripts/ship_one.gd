@@ -4,12 +4,7 @@ export (int) var thrust = 22
 export (int) var max_thrust = 100
 export (float) var turn_speed = 0.8
 
-var reset = false
 
-func _ready():
-	pass
-
-	
 func _physics_process(delta):
 	
 	if Input.is_action_pressed("thrust"):
@@ -28,6 +23,7 @@ func _physics_process(delta):
 		
 	if Input.is_action_pressed("reset"):
 		rotation = 0
+
 
 func rotate_ship(direction):
 	angular_velocity = direction * turn_speed
