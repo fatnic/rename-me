@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://scripts/ship_one.gd" type="Script" id=1]
 [ext_resource path="res://assets/images/ship_one.png" type="Texture" id=2]
 [ext_resource path="res://assets/images/lighting.png" type="Texture" id=3]
 [ext_resource path="res://scripts/exhaust_glow.gd" type="Script" id=4]
 [ext_resource path="res://assets/sounds/thrust_sound.ogg" type="AudioStream" id=5]
+[ext_resource path="res://assets/sounds/grapple_on.ogg" type="AudioStream" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -75,14 +76,14 @@ anim_offset_random = 0.0
 anim_loop = false
 _sections_unfolded = [ "Color" ]
 
-[node name="ship_one" type="RigidBody2D" index="0"]
+[node name="ship_one" type="RigidBody2D"]
 
 light_mask = 2
 input_pickable = false
 collision_layer = 2
 collision_mask = 9
 mode = 0
-mass = 8.0
+mass = 10.0
 friction = 1.0
 bounce = 0.0
 gravity_scale = 1.0
@@ -95,12 +96,12 @@ can_sleep = true
 linear_velocity = Vector2( 0, 0 )
 linear_damp = -1.0
 angular_velocity = 0.0
-angular_damp = -1.0
+angular_damp = 1.0
 script = ExtResource( 1 )
-_sections_unfolded = [ "Collision", "Visibility" ]
-thrust = 16
+_sections_unfolded = [ "Angular", "Collision", "Visibility" ]
+thrust = 22
 max_thrust = 100
-turn_speed = 0.5
+turn_speed = 0.8
 fuel = 100
 max_fuel = 100
 
@@ -167,6 +168,8 @@ shadow_filter_smooth = 0.0
 shadow_item_cull_mask = 2
 script = ExtResource( 4 )
 _sections_unfolded = [ "Range" ]
+tex_scale = Vector2( 0.5, 0.7 )
+energy_scale = Vector2( 0.8, 1.2 )
 
 [node name="exhaust_sound" type="AudioStreamPlayer" parent="." index="4"]
 
@@ -187,14 +190,33 @@ collision_mask = 1
 
 [node name="grapple" type="DampedSpringJoint2D" parent="." index="6"]
 
+visible = false
 position = Vector2( 0, 3 )
 node_a = NodePath("..")
 node_b = NodePath("")
 bias = 0.0
 disable_collision = true
-length = 20.0
-rest_length = 0.0
-stiffness = 10.0
-damping = 1.0
+length = 15.0
+rest_length = 15.0
+stiffness = 64.0
+damping = 0.5
+
+[node name="grapple_on_sound" type="AudioStreamPlayer" parent="." index="7"]
+
+stream = ExtResource( 6 )
+volume_db = 5.0
+pitch_scale = 0.7
+autoplay = false
+mix_target = 0
+bus = "Master"
+
+[node name="grapple_off_sound" type="AudioStreamPlayer" parent="." index="8"]
+
+stream = ExtResource( 6 )
+volume_db = 10.0
+pitch_scale = 1.2
+autoplay = false
+mix_target = 0
+bus = "Master"
 
 

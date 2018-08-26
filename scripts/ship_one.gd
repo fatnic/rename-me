@@ -28,10 +28,12 @@ func _physics_process(delta):
 		
 	if Input.is_action_just_pressed("grapple"):
 		if grappling:
-			print("%s is releasing %s" % [get_name(), grappling.get_name()])
+#			print("%s is releasing %s" % [get_name(), grappling.get_name()])
 			grappling.grapple = true
+			grappling.grappled_by = null
 			grappling = null
 			$grapple.node_b = ""
+			$grapple_off_sound.play()
 		
 	if Input.is_action_pressed("reset"):
 		rotation = 0
@@ -49,13 +51,25 @@ func thrust():
 	
 	
 func add_fuel(amount):
-	print("%s has received %d fuel" % [self.get_name(), amount])
+	pass
+#	print("%s has received %d fuel" % [self.get_name(), amount])
 	
 	
 func grapple_object(object):
 	
 	if not grappling:
-		print("%s has grappled %s" % [self.get_name(), object.get_name()])
+#		print("%s has grappled %s" % [self.get_name(), object.get_name()])
 		grappling = object
 		$grapple.node_b = object.get_path()
+		$grapple_on_sound.play()
 		object.grapple = false
+		
+
+func release_grapple():
+	
+	if grappling:
+		$grapple.node_b = ""
+		grappling.grappled_by = null
+		grappling = null
+		
+		
