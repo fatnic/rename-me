@@ -1,0 +1,960 @@
+[gd_scene load_steps=26 format=2]
+
+[ext_resource path="res://entities/block_destructed.gd" type="Script" id=1]
+[ext_resource path="res://assets/images/rock_tiles.png" type="Texture" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 1, 2 )
+
+[sub_resource type="RectangleShape2D" id=2]
+
+custom_solver_bias = 0.0
+extents = Vector2( 2, 1 )
+
+[sub_resource type="RectangleShape2D" id=3]
+
+custom_solver_bias = 0.0
+extents = Vector2( 1.5, 1.5 )
+
+[sub_resource type="RectangleShape2D" id=4]
+
+custom_solver_bias = 0.0
+extents = Vector2( 2.5, 1 )
+
+[sub_resource type="RectangleShape2D" id=5]
+
+custom_solver_bias = 0.0
+extents = Vector2( 1, 2.5 )
+
+[sub_resource type="RectangleShape2D" id=6]
+
+custom_solver_bias = 0.0
+extents = Vector2( 2, 1.5 )
+
+[sub_resource type="RectangleShape2D" id=7]
+
+custom_solver_bias = 0.0
+extents = Vector2( 1.5, 1 )
+
+[sub_resource type="RectangleShape2D" id=8]
+
+custom_solver_bias = 0.0
+extents = Vector2( 1, 2.5 )
+
+[sub_resource type="RectangleShape2D" id=9]
+
+custom_solver_bias = 0.0
+extents = Vector2( 1, 2 )
+
+[sub_resource type="RectangleShape2D" id=10]
+
+custom_solver_bias = 0.0
+extents = Vector2( 1.5, 1.5 )
+
+[sub_resource type="RectangleShape2D" id=11]
+
+custom_solver_bias = 0.0
+extents = Vector2( 1.5, 2 )
+
+[sub_resource type="RectangleShape2D" id=12]
+
+custom_solver_bias = 0.0
+extents = Vector2( 1.5, 1 )
+
+[sub_resource type="RectangleShape2D" id=13]
+
+custom_solver_bias = 0.0
+extents = Vector2( 1.5, 2 )
+
+[sub_resource type="RectangleShape2D" id=14]
+
+custom_solver_bias = 0.0
+extents = Vector2( 1, 1 )
+
+[sub_resource type="RectangleShape2D" id=15]
+
+custom_solver_bias = 0.0
+extents = Vector2( 0.5, 2.5 )
+
+[sub_resource type="RectangleShape2D" id=16]
+
+custom_solver_bias = 0.0
+extents = Vector2( 0.5, 2.5 )
+
+[sub_resource type="RectangleShape2D" id=17]
+
+custom_solver_bias = 0.0
+extents = Vector2( 1, 2.5 )
+
+[sub_resource type="RectangleShape2D" id=18]
+
+custom_solver_bias = 0.0
+extents = Vector2( 1, 2 )
+
+[sub_resource type="RectangleShape2D" id=19]
+
+custom_solver_bias = 0.0
+extents = Vector2( 1, 1 )
+
+[sub_resource type="RectangleShape2D" id=20]
+
+custom_solver_bias = 0.0
+extents = Vector2( 1.5, 1 )
+
+[sub_resource type="RectangleShape2D" id=21]
+
+custom_solver_bias = 0.0
+extents = Vector2( 2, 1 )
+
+[sub_resource type="Animation" id=22]
+
+resource_name = "fade_50"
+length = 0.5
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.588235 ) ]
+}
+
+[sub_resource type="Animation" id=23]
+
+length = 5.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[node name="block_destructed" type="Node2D"]
+
+position = Vector2( -8, -8 )
+script = ExtResource( 1 )
+_sections_unfolded = [ "Transform", "Visibility" ]
+
+[node name="pieces" type="Node2D" parent="." index="0"]
+
+[node name="piece01" type="RigidBody2D" parent="pieces" index="0"]
+
+editor/display_folded = true
+input_pickable = false
+collision_layer = 32
+collision_mask = 33
+mode = 0
+mass = 1.0
+friction = 1.0
+bounce = 0.0
+gravity_scale = 1.0
+custom_integrator = false
+continuous_cd = 0
+contacts_reported = 0
+contact_monitor = false
+sleeping = false
+can_sleep = true
+linear_velocity = Vector2( 0, 0 )
+linear_damp = -1.0
+angular_velocity = 0.0
+angular_damp = -1.0
+
+[node name="Sprite" type="Sprite" parent="pieces/piece01" index="0"]
+
+texture = ExtResource( 2 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 80, 32, 2, 4 )
+_sections_unfolded = [ "Offset", "Region" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pieces/piece01" index="1"]
+
+position = Vector2( 1, 2 )
+shape = SubResource( 1 )
+
+[node name="piece02" type="RigidBody2D" parent="pieces" index="1"]
+
+editor/display_folded = true
+position = Vector2( 2, 0 )
+input_pickable = false
+collision_layer = 32
+collision_mask = 33
+mode = 0
+mass = 1.0
+friction = 1.0
+bounce = 0.0
+gravity_scale = 1.0
+custom_integrator = false
+continuous_cd = 0
+contacts_reported = 0
+contact_monitor = false
+sleeping = false
+can_sleep = true
+linear_velocity = Vector2( 0, 0 )
+linear_damp = -1.0
+angular_velocity = 0.0
+angular_damp = -1.0
+
+[node name="Sprite" type="Sprite" parent="pieces/piece02" index="0"]
+
+texture = ExtResource( 2 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 82, 32, 4, 2 )
+_sections_unfolded = [ "Offset", "Region" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pieces/piece02" index="1"]
+
+position = Vector2( 2, 1 )
+shape = SubResource( 2 )
+
+[node name="piece03" type="RigidBody2D" parent="pieces" index="2"]
+
+editor/display_folded = true
+position = Vector2( 6, 0 )
+input_pickable = false
+collision_layer = 32
+collision_mask = 33
+mode = 0
+mass = 1.0
+friction = 1.0
+bounce = 0.0
+gravity_scale = 1.0
+custom_integrator = false
+continuous_cd = 0
+contacts_reported = 0
+contact_monitor = false
+sleeping = false
+can_sleep = true
+linear_velocity = Vector2( 0, 0 )
+linear_damp = -1.0
+angular_velocity = 0.0
+angular_damp = -1.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Sprite" type="Sprite" parent="pieces/piece03" index="0"]
+
+texture = ExtResource( 2 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 86, 32, 3, 3 )
+_sections_unfolded = [ "Offset", "Region" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pieces/piece03" index="1"]
+
+position = Vector2( 1.5, 1.5 )
+shape = SubResource( 3 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="piece04" type="RigidBody2D" parent="pieces" index="3"]
+
+editor/display_folded = true
+position = Vector2( 9, 0 )
+input_pickable = false
+collision_layer = 32
+collision_mask = 33
+mode = 0
+mass = 1.0
+friction = 1.0
+bounce = 0.0
+gravity_scale = 1.0
+custom_integrator = false
+continuous_cd = 0
+contacts_reported = 0
+contact_monitor = false
+sleeping = false
+can_sleep = true
+linear_velocity = Vector2( 0, 0 )
+linear_damp = -1.0
+angular_velocity = 0.0
+angular_damp = -1.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Sprite" type="Sprite" parent="pieces/piece04" index="0"]
+
+texture = ExtResource( 2 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 89, 32, 5, 2 )
+_sections_unfolded = [ "Offset", "Region" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pieces/piece04" index="1"]
+
+position = Vector2( 2.5, 1 )
+shape = SubResource( 4 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="piece05" type="RigidBody2D" parent="pieces" index="4"]
+
+editor/display_folded = true
+position = Vector2( 14, 0 )
+input_pickable = false
+collision_layer = 32
+collision_mask = 33
+mode = 0
+mass = 1.0
+friction = 1.0
+bounce = 0.0
+gravity_scale = 1.0
+custom_integrator = false
+continuous_cd = 0
+contacts_reported = 0
+contact_monitor = false
+sleeping = false
+can_sleep = true
+linear_velocity = Vector2( 0, 0 )
+linear_damp = -1.0
+angular_velocity = 0.0
+angular_damp = -1.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Sprite" type="Sprite" parent="pieces/piece05" index="0"]
+
+texture = ExtResource( 2 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 94, 32, 2, 5 )
+_sections_unfolded = [ "Offset", "Region" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pieces/piece05" index="1"]
+
+position = Vector2( 1, 2.5 )
+shape = SubResource( 5 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="piece06" type="RigidBody2D" parent="pieces" index="5"]
+
+editor/display_folded = true
+position = Vector2( 2, 2 )
+input_pickable = false
+collision_layer = 32
+collision_mask = 33
+mode = 0
+mass = 1.0
+friction = 1.0
+bounce = 0.0
+gravity_scale = 1.0
+custom_integrator = false
+continuous_cd = 0
+contacts_reported = 0
+contact_monitor = false
+sleeping = false
+can_sleep = true
+linear_velocity = Vector2( 0, 0 )
+linear_damp = -1.0
+angular_velocity = 0.0
+angular_damp = -1.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Sprite" type="Sprite" parent="pieces/piece06" index="0"]
+
+texture = ExtResource( 2 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 82, 34, 4, 3 )
+_sections_unfolded = [ "Offset", "Region" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pieces/piece06" index="1"]
+
+position = Vector2( 2, 1.5 )
+shape = SubResource( 6 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="piece07" type="RigidBody2D" parent="pieces" index="6"]
+
+editor/display_folded = true
+position = Vector2( 9, 2 )
+input_pickable = false
+collision_layer = 32
+collision_mask = 33
+mode = 0
+mass = 1.0
+friction = 1.0
+bounce = 0.0
+gravity_scale = 1.0
+custom_integrator = false
+continuous_cd = 0
+contacts_reported = 0
+contact_monitor = false
+sleeping = false
+can_sleep = true
+linear_velocity = Vector2( 0, 0 )
+linear_damp = -1.0
+angular_velocity = 0.0
+angular_damp = -1.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Sprite" type="Sprite" parent="pieces/piece07" index="0"]
+
+texture = ExtResource( 2 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 89, 34, 3, 2 )
+_sections_unfolded = [ "Offset", "Region" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pieces/piece07" index="1"]
+
+position = Vector2( 1.5, 1 )
+shape = SubResource( 7 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="piece08" type="RigidBody2D" parent="pieces" index="7"]
+
+editor/display_folded = true
+position = Vector2( 12, 2 )
+input_pickable = false
+collision_layer = 32
+collision_mask = 33
+mode = 0
+mass = 1.0
+friction = 1.0
+bounce = 0.0
+gravity_scale = 1.0
+custom_integrator = false
+continuous_cd = 0
+contacts_reported = 0
+contact_monitor = false
+sleeping = false
+can_sleep = true
+linear_velocity = Vector2( 0, 0 )
+linear_damp = -1.0
+angular_velocity = 0.0
+angular_damp = -1.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Sprite" type="Sprite" parent="pieces/piece08" index="0"]
+
+texture = ExtResource( 2 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 92, 34, 2, 5 )
+_sections_unfolded = [ "Offset", "Region" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pieces/piece08" index="1"]
+
+position = Vector2( 1, 2.5 )
+shape = SubResource( 8 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="piece09" type="RigidBody2D" parent="pieces" index="8"]
+
+editor/display_folded = true
+position = Vector2( 0, 4 )
+input_pickable = false
+collision_layer = 32
+collision_mask = 33
+mode = 0
+mass = 1.0
+friction = 1.0
+bounce = 0.0
+gravity_scale = 1.0
+custom_integrator = false
+continuous_cd = 0
+contacts_reported = 0
+contact_monitor = false
+sleeping = false
+can_sleep = true
+linear_velocity = Vector2( 0, 0 )
+linear_damp = -1.0
+angular_velocity = 0.0
+angular_damp = -1.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Sprite" type="Sprite" parent="pieces/piece09" index="0"]
+
+texture = ExtResource( 2 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 80, 36, 2, 4 )
+_sections_unfolded = [ "Offset", "Region" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pieces/piece09" index="1"]
+
+position = Vector2( 1, 2 )
+shape = SubResource( 9 )
+
+[node name="piece10" type="RigidBody2D" parent="pieces" index="9"]
+
+editor/display_folded = true
+position = Vector2( 6, 3 )
+input_pickable = false
+collision_layer = 32
+collision_mask = 33
+mode = 0
+mass = 1.0
+friction = 1.0
+bounce = 0.0
+gravity_scale = 1.0
+custom_integrator = false
+continuous_cd = 0
+contacts_reported = 0
+contact_monitor = false
+sleeping = false
+can_sleep = true
+linear_velocity = Vector2( 0, 0 )
+linear_damp = -1.0
+angular_velocity = 0.0
+angular_damp = -1.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Sprite" type="Sprite" parent="pieces/piece10" index="0"]
+
+texture = ExtResource( 2 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 86, 35, 3, 3 )
+_sections_unfolded = [ "Offset", "Region" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pieces/piece10" index="1"]
+
+position = Vector2( 1.5, 1.5 )
+shape = SubResource( 10 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="piece11" type="RigidBody2D" parent="pieces" index="10"]
+
+editor/display_folded = true
+position = Vector2( 9, 4 )
+input_pickable = false
+collision_layer = 32
+collision_mask = 33
+mode = 0
+mass = 1.0
+friction = 1.0
+bounce = 0.0
+gravity_scale = 1.0
+custom_integrator = false
+continuous_cd = 0
+contacts_reported = 0
+contact_monitor = false
+sleeping = false
+can_sleep = true
+linear_velocity = Vector2( 0, 0 )
+linear_damp = -1.0
+angular_velocity = 0.0
+angular_damp = -1.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Sprite" type="Sprite" parent="pieces/piece11" index="0"]
+
+texture = ExtResource( 2 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 89, 36, 3, 4 )
+_sections_unfolded = [ "Offset", "Region" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pieces/piece11" index="1"]
+
+position = Vector2( 1.5, 2 )
+shape = SubResource( 11 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="piece12" type="RigidBody2D" parent="pieces" index="11"]
+
+editor/display_folded = true
+position = Vector2( 2, 5 )
+input_pickable = false
+collision_layer = 32
+collision_mask = 33
+mode = 0
+mass = 1.0
+friction = 1.0
+bounce = 0.0
+gravity_scale = 1.0
+custom_integrator = false
+continuous_cd = 0
+contacts_reported = 0
+contact_monitor = false
+sleeping = false
+can_sleep = true
+linear_velocity = Vector2( 0, 0 )
+linear_damp = -1.0
+angular_velocity = 0.0
+angular_damp = -1.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Sprite" type="Sprite" parent="pieces/piece12" index="0"]
+
+texture = ExtResource( 2 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 82, 37, 3, 2 )
+_sections_unfolded = [ "Offset", "Region" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pieces/piece12" index="1"]
+
+position = Vector2( 1.5, 1 )
+shape = SubResource( 12 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="piece14" type="RigidBody2D" parent="pieces" index="12"]
+
+editor/display_folded = true
+position = Vector2( 2, 7 )
+input_pickable = false
+collision_layer = 32
+collision_mask = 33
+mode = 0
+mass = 1.0
+friction = 1.0
+bounce = 0.0
+gravity_scale = 1.0
+custom_integrator = false
+continuous_cd = 0
+contacts_reported = 0
+contact_monitor = false
+sleeping = false
+can_sleep = true
+linear_velocity = Vector2( 0, 0 )
+linear_damp = -1.0
+angular_velocity = 0.0
+angular_damp = -1.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Sprite" type="Sprite" parent="pieces/piece14" index="0"]
+
+texture = ExtResource( 2 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 82, 39, 3, 4 )
+_sections_unfolded = [ "Offset", "Region" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pieces/piece14" index="1"]
+
+position = Vector2( 1.5, 2 )
+shape = SubResource( 13 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="piece15" type="RigidBody2D" parent="pieces" index="13"]
+
+editor/display_folded = true
+position = Vector2( 0, 8 )
+input_pickable = false
+collision_layer = 32
+collision_mask = 33
+mode = 0
+mass = 1.0
+friction = 1.0
+bounce = 0.0
+gravity_scale = 1.0
+custom_integrator = false
+continuous_cd = 0
+contacts_reported = 0
+contact_monitor = false
+sleeping = false
+can_sleep = true
+linear_velocity = Vector2( 0, 0 )
+linear_damp = -1.0
+angular_velocity = 0.0
+angular_damp = -1.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Sprite" type="Sprite" parent="pieces/piece15" index="0"]
+
+texture = ExtResource( 2 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 80, 40, 2, 2 )
+_sections_unfolded = [ "Offset", "Region" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pieces/piece15" index="1"]
+
+position = Vector2( 1, 1 )
+shape = SubResource( 14 )
+
+[node name="piece16" type="RigidBody2D" parent="pieces" index="14"]
+
+editor/display_folded = true
+position = Vector2( 5, 5 )
+input_pickable = false
+collision_layer = 32
+collision_mask = 33
+mode = 0
+mass = 1.0
+friction = 1.0
+bounce = 0.0
+gravity_scale = 1.0
+custom_integrator = false
+continuous_cd = 0
+contacts_reported = 0
+contact_monitor = false
+sleeping = false
+can_sleep = true
+linear_velocity = Vector2( 0, 0 )
+linear_damp = -1.0
+angular_velocity = 0.0
+angular_damp = -1.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Sprite" type="Sprite" parent="pieces/piece16" index="0"]
+
+texture = ExtResource( 2 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 85, 37, 1, 5 )
+_sections_unfolded = [ "Offset", "Region" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pieces/piece16" index="1"]
+
+position = Vector2( 0.5, 2.5 )
+shape = SubResource( 15 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="piece17" type="RigidBody2D" parent="pieces" index="15"]
+
+editor/display_folded = true
+position = Vector2( 6, 6 )
+input_pickable = false
+collision_layer = 32
+collision_mask = 33
+mode = 0
+mass = 1.0
+friction = 1.0
+bounce = 0.0
+gravity_scale = 1.0
+custom_integrator = false
+continuous_cd = 0
+contacts_reported = 0
+contact_monitor = false
+sleeping = false
+can_sleep = true
+linear_velocity = Vector2( 0, 0 )
+linear_damp = -1.0
+angular_velocity = 0.0
+angular_damp = -1.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Sprite" type="Sprite" parent="pieces/piece17" index="0"]
+
+texture = ExtResource( 2 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 86, 38, 1, 5 )
+_sections_unfolded = [ "Offset", "Region" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pieces/piece17" index="1"]
+
+position = Vector2( 0.5, 2.5 )
+shape = SubResource( 16 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="piece18" type="RigidBody2D" parent="pieces" index="16"]
+
+editor/display_folded = true
+position = Vector2( 7, 6 )
+input_pickable = false
+collision_layer = 32
+collision_mask = 33
+mode = 0
+mass = 1.0
+friction = 1.0
+bounce = 0.0
+gravity_scale = 1.0
+custom_integrator = false
+continuous_cd = 0
+contacts_reported = 0
+contact_monitor = false
+sleeping = false
+can_sleep = true
+linear_velocity = Vector2( 0, 0 )
+linear_damp = -1.0
+angular_velocity = 0.0
+angular_damp = -1.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Sprite" type="Sprite" parent="pieces/piece18" index="0"]
+
+texture = ExtResource( 2 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 87, 38, 2, 5 )
+_sections_unfolded = [ "Offset", "Region" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pieces/piece18" index="1"]
+
+position = Vector2( 1, 2.5 )
+shape = SubResource( 17 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="piece19" type="RigidBody2D" parent="pieces" index="17"]
+
+editor/display_folded = true
+position = Vector2( 14, 5 )
+input_pickable = false
+collision_layer = 32
+collision_mask = 33
+mode = 0
+mass = 1.0
+friction = 1.0
+bounce = 0.0
+gravity_scale = 1.0
+custom_integrator = false
+continuous_cd = 0
+contacts_reported = 0
+contact_monitor = false
+sleeping = false
+can_sleep = true
+linear_velocity = Vector2( 0, 0 )
+linear_damp = -1.0
+angular_velocity = 0.0
+angular_damp = -1.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Sprite" type="Sprite" parent="pieces/piece19" index="0"]
+
+texture = ExtResource( 2 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 94, 37, 2, 4 )
+_sections_unfolded = [ "Offset", "Region" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pieces/piece19" index="1"]
+
+position = Vector2( 1, 2 )
+shape = SubResource( 18 )
+
+[node name="piece20" type="RigidBody2D" parent="pieces" index="18"]
+
+editor/display_folded = true
+position = Vector2( 14, 5 )
+input_pickable = false
+collision_layer = 32
+collision_mask = 33
+mode = 0
+mass = 1.0
+friction = 1.0
+bounce = 0.0
+gravity_scale = 1.0
+custom_integrator = false
+continuous_cd = 0
+contacts_reported = 0
+contact_monitor = false
+sleeping = false
+can_sleep = true
+linear_velocity = Vector2( 0, 0 )
+linear_damp = -1.0
+angular_velocity = 0.0
+angular_damp = -1.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Sprite" type="Sprite" parent="pieces/piece20" index="0"]
+
+position = Vector2( -2, 2 )
+texture = ExtResource( 2 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 92, 39, 2, 2 )
+_sections_unfolded = [ "Offset", "Region" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pieces/piece20" index="1"]
+
+position = Vector2( -1, 3 )
+shape = SubResource( 19 )
+
+[node name="piece21" type="RigidBody2D" parent="pieces" index="19"]
+
+editor/display_folded = true
+position = Vector2( 11, 6 )
+input_pickable = false
+collision_layer = 32
+collision_mask = 33
+mode = 0
+mass = 1.0
+friction = 1.0
+bounce = 0.0
+gravity_scale = 1.0
+custom_integrator = false
+continuous_cd = 0
+contacts_reported = 0
+contact_monitor = false
+sleeping = false
+can_sleep = true
+linear_velocity = Vector2( 0, 0 )
+linear_damp = -1.0
+angular_velocity = 0.0
+angular_damp = -1.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Sprite" type="Sprite" parent="pieces/piece21" index="0"]
+
+position = Vector2( -2, 2 )
+texture = ExtResource( 2 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 89, 40, 3, 2 )
+_sections_unfolded = [ "Offset", "Region" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pieces/piece21" index="1"]
+
+position = Vector2( -0.5, 3 )
+shape = SubResource( 20 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="piece22" type="RigidBody2D" parent="pieces" index="20"]
+
+editor/display_folded = true
+position = Vector2( 11, 6 )
+input_pickable = false
+collision_layer = 32
+collision_mask = 33
+mode = 0
+mass = 1.0
+friction = 1.0
+bounce = 0.0
+gravity_scale = 1.0
+custom_integrator = false
+continuous_cd = 0
+contacts_reported = 0
+contact_monitor = false
+sleeping = false
+can_sleep = true
+linear_velocity = Vector2( 0, 0 )
+linear_damp = -1.0
+angular_velocity = 0.0
+angular_damp = -1.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Sprite" type="Sprite" parent="pieces/piece22" index="0"]
+
+position = Vector2( 1, 3 )
+texture = ExtResource( 2 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 92, 41, 4, 2 )
+_sections_unfolded = [ "Offset", "Region" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pieces/piece22" index="1"]
+
+position = Vector2( 3, 4 )
+shape = SubResource( 21 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1"]
+
+root_node = NodePath("..")
+autoplay = ""
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 1.0
+anims/fade_50 = SubResource( 22 )
+anims/fade_out = SubResource( 23 )
+blend_times = [  ]
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+
+

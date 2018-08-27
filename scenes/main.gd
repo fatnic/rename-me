@@ -2,6 +2,7 @@ extends Node2D
 
 var scn_explosion = load("res://entities/explosion.tscn")
 
+
 func _ready():
 	add_signals_from_group("explosive", self, "spawn_explosion")
 	$AudioStreamPlayer.play()
