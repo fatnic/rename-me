@@ -1,14 +1,20 @@
 extends Node2D
 
 var scn_explosion = load("res://entities/explosion.tscn")
+var scn_rocket = load("res://entities/rocket_he.tscn")
 
 
 func _ready():
 	add_signals_from_group("explosive", self, "spawn_explosion")
-
-
+	add_signals_from_group("weapon", self, "fire_weapon")
+	
 func _process(delta):
 	update()
+
+	
+func add_signals_from_group(group_name, target, method):
+	for item in get_tree().get_nodes_in_group(group_name):
+		item.connect(method, target, method)	
 
 
 func spawn_explosion(pos, power = 20, scl = 1.0):
@@ -19,10 +25,12 @@ func spawn_explosion(pos, power = 20, scl = 1.0):
 	add_child(explosion)
 	
 	
-func add_signals_from_group(group_name, target, method):
-	for item in get_tree().get_nodes_in_group(group_name):
-		item.connect(method, target, method)	
-		
+func fire_weapon(target, pos, dir):
+	var rocket = scn_rocket.instance()
+	rocket.connect("spawn_explosion", self, "spawn_explosion")
+	rocket.start(target, pos, dir)
+	add_child(rocket)
+
 		
 func _draw():
 	if $ship_one.grappling:

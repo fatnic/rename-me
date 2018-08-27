@@ -82,6 +82,4 @@ func release_grapple():
 		$grapple.node_b = ""
 		grappling.grappled_by = null
 		grappling = null
-		
-
 
