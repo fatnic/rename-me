@@ -1,7 +1,7 @@
 extends RigidBody2D
 
 ## Interactable variables
-export (int) var interact_radius = 8
+export (int) var interact_radius = 6
 export (bool) var collect = true
 export (bool) var grapple = false
 var grappled_by = null

@@ -12,29 +12,27 @@ script = ExtResource( 1 )
 
 [node name="interactables" type="Node2D" parent="." index="0"]
 
-editor/display_folded = true
-
 [node name="fuel_cell_small" parent="interactables" index="0" instance=ExtResource( 2 )]
 
 position = Vector2( 102, 333 )
-interact_radius = 16
+interact_radius = 10
 
 [node name="fuel_cell_small2" parent="interactables" index="1" instance=ExtResource( 2 )]
 
 position = Vector2( 31, 174 )
-interact_radius = 16
+interact_radius = 10
 
 [node name="fuel_cell_small3" parent="interactables" index="2" instance=ExtResource( 2 )]
 
 position = Vector2( 250, 142 )
 _sections_unfolded = [ "Collision", "Transform", "Visibility" ]
-interact_radius = 16
+interact_radius = 10
 
 [node name="fuel_cell_small4" parent="interactables" index="3" instance=ExtResource( 2 )]
 
 position = Vector2( 354, 174 )
 _sections_unfolded = [ "Collision", "Transform", "Visibility" ]
-interact_radius = 16
+interact_radius = 10
 
 [node name="level_001" parent="." index="1" instance=ExtResource( 3 )]
 

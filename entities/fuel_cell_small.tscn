@@ -11,7 +11,7 @@
 custom_solver_bias = 0.0
 extents = Vector2( 1.5, 1.5 )
 
-[node name="fuel_cell_small" type="RigidBody2D" index="0" groups=[
+[node name="fuel_cell_small" type="RigidBody2D" groups=[
 "fuel",
 "explosive",
 ]]
@@ -37,7 +37,7 @@ angular_velocity = 0.0
 angular_damp = -1.0
 script = ExtResource( 1 )
 _sections_unfolded = [ "Collision", "Visibility" ]
-interact_radius = 8
+interact_radius = 6
 collect = true
 grapple = true
 fuel_amount = 10
@@ -59,7 +59,7 @@ enabled = true
 editor_only = false
 texture = ExtResource( 3 )
 offset = Vector2( 0, 0 )
-texture_scale = 0.3
+texture_scale = 0.2
 color = Color( 0.39494, 0.976562, 0.0686646, 1 )
 energy = 1.5
 mode = 0
