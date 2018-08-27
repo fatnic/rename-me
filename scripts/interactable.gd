@@ -3,6 +3,7 @@ extends Area2D
 var parent = null
 
 var interacting = null
+export (int) var interact_radius = 10
 
 var collect = false
 var grapple = false
@@ -10,11 +11,9 @@ var grapple = false
 
 func _ready():
 	
+	$CollisionShape2D.shape.radius = interact_radius
+	
 	parent = get_parent()
-	
-	if parent.get("interact_radius"): 
-		$CollisionShape2D.shape.radius = parent.interact_radius
-	
 	_check_parent_var("collect")
 	_check_parent_var("grapple")
 		
@@ -39,8 +38,8 @@ func _physics_process(delta):
 				
 		
 func _on_interactable_body_entered(body):
-	interacting = body
 #	print("%s is interacting with %s" % [body.get_name(), parent.get_name()])
+	interacting = body
 
 
 func _on_interactable_body_exited(body):

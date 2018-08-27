@@ -1,9 +1,8 @@
 extends RigidBody2D
 
 ## Interactable variables
-export (int) var interact_radius = 6
 export (bool) var collect = true
-export (bool) var grapple = false
+export (bool) var grapple = true
 var grappled_by = null
 
 export (int) var fuel_amount = 10
