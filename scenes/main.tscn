@@ -16,7 +16,7 @@ _sections_unfolded = [ "Material", "Transform", "Visibility", "Z Index" ]
 
 [node name="ship_one" parent="." index="1" instance=ExtResource( 3 )]
 
-position = Vector2( 87, 187 )
+position = Vector2( 131, 332 )
 
 [node name="background_music" type="AudioStreamPlayer" parent="." index="2"]
 

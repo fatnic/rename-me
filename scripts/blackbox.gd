@@ -2,6 +2,7 @@ extends Sprite
 
 export (bool) var collect = true
 
+
 func _ready():
 	$AnimationPlayer.play("light_flash")
 	

@@ -34,6 +34,11 @@ func seek():
 	return steer
 	
 
-func _on_rocket_he_body_entered(body):
+func explode():
 	emit_signal("spawn_explosion", position, 20, 0.5)
 	queue_free()
+	
+
+func _on_rocket_he_body_entered(body):
+	explode()
+	
