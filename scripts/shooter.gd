@@ -13,6 +13,8 @@ func _process(delta):
 		on_cooldown = true
 		$cooldown.start()
 		$gunshot.play()
+		$flash.enabled = true
+		$flash/timer.start()
 		emit_signal("fire_weapon", ammo, target, position, (target.position - position).normalized())
 		
 
@@ -26,3 +28,6 @@ func _on_range_body_exited(body):
 
 func _on_cooldown_timeout():
 	on_cooldown = false
+
+func _on_timer_timeout():
+	$flash.enabled = false

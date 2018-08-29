@@ -13,7 +13,7 @@ func _process(delta):
 	
 	if target:
 		
-		var space_state = get_parent().get_world_2d().direct_space_state
+		var space_state = get_tree().get_root().get_world_2d().direct_space_state
 		var result = space_state.intersect_ray(get_parent().global_position, target.global_position, [get_parent()], get_parent().collision_mask)
 		
 		if result:
