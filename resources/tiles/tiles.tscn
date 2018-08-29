@@ -1,13 +1,14 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://assets/images/rock_tiles.png" type="Texture" id=1]
+[ext_resource path="res://assets/images/dest_normal.png" type="Texture" id=2]
 
-[sub_resource type="RectangleShape2D" id=6]
+[sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
 extents = Vector2( 8, 8 )
 
-[sub_resource type="OccluderPolygon2D" id=5]
+[sub_resource type="OccluderPolygon2D" id=2]
 
 closed = true
 cull_mode = 0
@@ -37,11 +38,11 @@ bounce = 0.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="rock_floor_left/StaticBody2D" index="0"]
 
-shape = SubResource( 6 )
+shape = SubResource( 1 )
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="rock_floor_left" index="1"]
 
-occluder = SubResource( 5 )
+occluder = SubResource( 2 )
 light_mask = 1
 
 [node name="rock_floor_middle" type="Sprite" parent="." index="1"]
@@ -66,11 +67,11 @@ bounce = 0.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="rock_floor_middle/StaticBody2D" index="0"]
 
-shape = SubResource( 6 )
+shape = SubResource( 1 )
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="rock_floor_middle" index="1"]
 
-occluder = SubResource( 5 )
+occluder = SubResource( 2 )
 light_mask = 1
 
 [node name="rock_floor_middle2" type="Sprite" parent="." index="2"]
@@ -95,11 +96,11 @@ bounce = 0.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="rock_floor_middle2/StaticBody2D" index="0"]
 
-shape = SubResource( 6 )
+shape = SubResource( 1 )
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="rock_floor_middle2" index="1"]
 
-occluder = SubResource( 5 )
+occluder = SubResource( 2 )
 light_mask = 1
 
 [node name="rock_floor_right" type="Sprite" parent="." index="3"]
@@ -124,11 +125,11 @@ bounce = 0.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="rock_floor_right/StaticBody2D" index="0"]
 
-shape = SubResource( 6 )
+shape = SubResource( 1 )
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="rock_floor_right" index="1"]
 
-occluder = SubResource( 5 )
+occluder = SubResource( 2 )
 light_mask = 1
 
 [node name="rock_right" type="Sprite" parent="." index="4"]
@@ -153,11 +154,11 @@ bounce = 0.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="rock_right/StaticBody2D" index="0"]
 
-shape = SubResource( 6 )
+shape = SubResource( 1 )
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="rock_right" index="1"]
 
-occluder = SubResource( 5 )
+occluder = SubResource( 2 )
 light_mask = 1
 
 [node name="rock_middle" type="Sprite" parent="." index="5"]
@@ -182,11 +183,11 @@ bounce = 0.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="rock_middle/StaticBody2D" index="0"]
 
-shape = SubResource( 6 )
+shape = SubResource( 1 )
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="rock_middle" index="1"]
 
-occluder = SubResource( 5 )
+occluder = SubResource( 2 )
 light_mask = 1
 
 [node name="rock_middle2" type="Sprite" parent="." index="6"]
@@ -211,11 +212,11 @@ bounce = 0.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="rock_middle2/StaticBody2D" index="0"]
 
-shape = SubResource( 6 )
+shape = SubResource( 1 )
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="rock_middle2" index="1"]
 
-occluder = SubResource( 5 )
+occluder = SubResource( 2 )
 light_mask = 1
 
 [node name="rock_left" type="Sprite" parent="." index="7"]
@@ -240,11 +241,11 @@ bounce = 0.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="rock_left/StaticBody2D" index="0"]
 
-shape = SubResource( 6 )
+shape = SubResource( 1 )
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="rock_left" index="1"]
 
-occluder = SubResource( 5 )
+occluder = SubResource( 2 )
 light_mask = 1
 
 [node name="rock_bottom_right" type="Sprite" parent="." index="8"]
@@ -273,7 +274,7 @@ polygon = PoolVector2Array( -8, -8, 8, -8, 8, 8, 0, 8, -8, 0 )
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="rock_bottom_right" index="1"]
 
-occluder = SubResource( 5 )
+occluder = SubResource( 2 )
 light_mask = 1
 
 [node name="rock_bottom_middle" type="Sprite" parent="." index="9"]
@@ -298,11 +299,11 @@ bounce = 0.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="rock_bottom_middle/StaticBody2D" index="0"]
 
-shape = SubResource( 6 )
+shape = SubResource( 1 )
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="rock_bottom_middle" index="1"]
 
-occluder = SubResource( 5 )
+occluder = SubResource( 2 )
 light_mask = 1
 
 [node name="rock_bottom_middle2" type="Sprite" parent="." index="10"]
@@ -327,11 +328,11 @@ bounce = 0.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="rock_bottom_middle2/StaticBody2D" index="0"]
 
-shape = SubResource( 6 )
+shape = SubResource( 1 )
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="rock_bottom_middle2" index="1"]
 
-occluder = SubResource( 5 )
+occluder = SubResource( 2 )
 light_mask = 1
 
 [node name="rock_floor_single" type="Sprite" parent="." index="11"]
@@ -356,11 +357,11 @@ bounce = 0.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="rock_floor_single/StaticBody2D" index="0"]
 
-shape = SubResource( 6 )
+shape = SubResource( 1 )
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="rock_floor_single" index="1"]
 
-occluder = SubResource( 5 )
+occluder = SubResource( 2 )
 light_mask = 1
 
 [node name="rock_horizontal_middle" type="Sprite" parent="." index="12"]
@@ -385,11 +386,11 @@ bounce = 0.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="rock_horizontal_middle/StaticBody2D" index="0"]
 
-shape = SubResource( 6 )
+shape = SubResource( 1 )
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="rock_horizontal_middle" index="1"]
 
-occluder = SubResource( 5 )
+occluder = SubResource( 2 )
 light_mask = 1
 
 [node name="rock_horizontal_bottom" type="Sprite" parent="." index="13"]
@@ -418,7 +419,7 @@ polygon = PoolVector2Array( -8, -8, 8, -8, 8, 3, 3, 8, -3, 8, -8, 3 )
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="rock_horizontal_bottom" index="1"]
 
-occluder = SubResource( 5 )
+occluder = SubResource( 2 )
 light_mask = 1
 
 [node name="bg" type="Sprite" parent="." index="14"]
@@ -439,9 +440,9 @@ _sections_unfolded = [ "Region" ]
 
 [node name="rock_destructable" type="Sprite" parent="." index="16"]
 
-editor/display_folded = true
 position = Vector2( 80, 64 )
 texture = ExtResource( 1 )
+normal_map = ExtResource( 2 )
 region_enabled = true
 region_rect = Rect2( 80, 32, 16, 16 )
 _sections_unfolded = [ "Region" ]
@@ -459,11 +460,11 @@ bounce = 0.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="rock_destructable/StaticBody2D" index="0"]
 
-shape = SubResource( 6 )
+shape = SubResource( 1 )
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="rock_destructable" index="1"]
 
-occluder = SubResource( 5 )
+occluder = SubResource( 2 )
 light_mask = 1
 
 

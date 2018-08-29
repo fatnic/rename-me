@@ -2,7 +2,7 @@
 
 [ext_resource path="res://scripts/line_of_sight.gd" type="Script" id=1]
 
-[node name="line_of_sight" type="Node2D"]
+[node name="line_of_sight" type="Node"]
 
 script = ExtResource( 1 )
 
