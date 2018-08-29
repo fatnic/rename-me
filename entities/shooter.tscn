@@ -29,7 +29,7 @@ constant_angular_velocity = 0.0
 friction = 1.0
 bounce = 0.0
 script = ExtResource( 1 )
-_sections_unfolded = [ "Collision" ]
+_sections_unfolded = [ "Collision", "Visibility" ]
 ammo = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="." index="0"]
@@ -80,21 +80,20 @@ bus = "Master"
 
 [node name="flash" type="Light2D" parent="." index="6"]
 
-position = Vector2( 0, 4 )
 enabled = false
 editor_only = false
 texture = ExtResource( 6 )
 offset = Vector2( 0, 0 )
 texture_scale = 0.2
-color = Color( 0.83396, 0.925781, 0.455658, 1 )
-energy = 1.5
+color = Color( 0.949219, 0.904724, 0.237305, 1 )
+energy = 1.8
 mode = 0
 range_height = 0.0
 range_z_min = -1024
 range_z_max = 1024
 range_layer_min = 0
 range_layer_max = 0
-range_item_cull_mask = 9
+range_item_cull_mask = 8
 shadow_enabled = false
 shadow_color = Color( 0, 0, 0, 0 )
 shadow_buffer_size = 2048
