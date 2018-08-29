@@ -1,0 +1,86 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://scripts/shooter.gd" type="Script" id=1]
+[ext_resource path="res://entities/bullet.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/images/shooter.png" type="Texture" id=3]
+[ext_resource path="res://assets/sounds/gunshot.ogg" type="AudioStream" id=4]
+[ext_resource path="res://entities/nodes/line_of_sight.tscn" type="PackedScene" id=5]
+
+[sub_resource type="CircleShape2D" id=1]
+
+custom_solver_bias = 0.0
+radius = 5.0
+
+[sub_resource type="CircleShape2D" id=2]
+
+custom_solver_bias = 0.0
+radius = 150.0
+
+[node name="shooter" type="StaticBody2D" groups=[
+"weapon",
+]]
+
+input_pickable = false
+collision_layer = 8
+collision_mask = 3
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+script = ExtResource( 1 )
+_sections_unfolded = [ "Collision" ]
+ammo = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="." index="0"]
+
+texture = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
+
+visible = false
+position = Vector2( 0, -3 )
+shape = SubResource( 1 )
+
+[node name="cooldown" type="Timer" parent="." index="2"]
+
+process_mode = 1
+wait_time = 0.1
+one_shot = false
+autostart = false
+
+[node name="range" type="Area2D" parent="." index="3"]
+
+visible = false
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+collision_layer = 8
+collision_mask = 2
+audio_bus_override = false
+audio_bus_name = "Master"
+_sections_unfolded = [ "Collision" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="range" index="0"]
+
+shape = SubResource( 2 )
+
+[node name="gunshot" type="AudioStreamPlayer" parent="." index="4"]
+
+stream = ExtResource( 4 )
+volume_db = -6.0
+pitch_scale = 1.0
+autoplay = false
+mix_target = 0
+bus = "Master"
+
+[node name="line_of_sight" parent="." index="5" instance=ExtResource( 5 )]
+
+[connection signal="timeout" from="cooldown" to="." method="_on_cooldown_timeout"]
+
+[connection signal="body_entered" from="range" to="." method="_on_range_body_entered"]
+
+[connection signal="body_exited" from="range" to="." method="_on_range_body_exited"]
+
+

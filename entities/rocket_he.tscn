@@ -92,7 +92,7 @@ audio_bus_name = "Master"
 script = ExtResource( 1 )
 _sections_unfolded = [ "Collision", "Visibility", "collision" ]
 speed = 90
-steer_force = 14
+steer_force = 16
 
 [node name="Sprite" type="Sprite" parent="." index="0"]
 

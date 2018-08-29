@@ -1,10 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scripts/main.gd" type="Script" id=1]
 [ext_resource path="res://scenes/level_001.tscn" type="PackedScene" id=2]
 [ext_resource path="res://entities/ship_one.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/sounds/horror_bg.ogg" type="AudioStream" id=4]
-[ext_resource path="res://entities/blackbox.tscn" type="PackedScene" id=5]
 
 [node name="main" type="Node2D"]
 
@@ -16,7 +15,7 @@ _sections_unfolded = [ "Material", "Transform", "Visibility", "Z Index" ]
 
 [node name="ship_one" parent="." index="1" instance=ExtResource( 3 )]
 
-position = Vector2( 131, 332 )
+position = Vector2( 395, 332 )
 
 [node name="background_music" type="AudioStreamPlayer" parent="." index="2"]
 
@@ -26,9 +25,5 @@ pitch_scale = 1.0
 autoplay = true
 mix_target = 0
 bus = "Master"
-
-[node name="blackbox" parent="." index="3" instance=ExtResource( 5 )]
-
-position = Vector2( 538, 79 )
 
 

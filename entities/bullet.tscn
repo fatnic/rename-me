@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scripts/bullet.gd" type="Script" id=1]
+
+[sub_resource type="CircleShape2D" id=2]
+
+custom_solver_bias = 0.0
+radius = 0.5
+
+[node name="bullet" type="KinematicBody2D" index="0" groups=[
+"bullet",
+]]
+
+z_index = 100
+input_pickable = false
+collision_layer = 64
+collision_mask = 23
+collision/safe_margin = 0.08
+script = ExtResource( 1 )
+_sections_unfolded = [ "Collision", "Z Index" ]
+radius = 0.5
+colour = Color( 0.718758, 0.75, 0.178711, 1 )
+speed = 170
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
+
+shape = SubResource( 2 )
+
+

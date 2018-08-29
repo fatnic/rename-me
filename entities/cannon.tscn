@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scripts/cannon.gd" type="Script" id=1]
-[ext_resource path="res://assets/images/cannon.png" type="Texture" id=2]
-[ext_resource path="res://assets/images/lighting.png" type="Texture" id=3]
+[ext_resource path="res://entities/rocket_he.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/images/cannon.png" type="Texture" id=3]
+[ext_resource path="res://assets/images/lighting.png" type="Texture" id=4]
+[ext_resource path="res://entities/nodes/line_of_sight.tscn" type="PackedScene" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -14,13 +16,14 @@ extents = Vector2( 8, 8 )
 custom_solver_bias = 0.0
 radius = 161.003
 
-[node name="cannon" type="RigidBody2D" index="0" groups=[
+[node name="cannon" type="RigidBody2D" groups=[
 "weapon",
 ]]
 
+z_index = 51
 input_pickable = false
-collision_layer = 1
-collision_mask = 1
+collision_layer = 0
+collision_mask = 6
 mode = 3
 mass = 1.0
 friction = 1.0
@@ -37,10 +40,12 @@ linear_damp = -1.0
 angular_velocity = 0.0
 angular_damp = -1.0
 script = ExtResource( 1 )
+_sections_unfolded = [ "Collision", "Visibility", "Z Index" ]
+ammo = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="." index="0"]
 
-texture = ExtResource( 2 )
+texture = ExtResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
 
@@ -49,12 +54,13 @@ shape = SubResource( 1 )
 
 [node name="range" type="Area2D" parent="." index="2"]
 
+editor/display_folded = true
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
-collision_layer = 8
+collision_layer = 0
 collision_mask = 2
 audio_bus_override = false
 audio_bus_name = "Master"
@@ -62,17 +68,19 @@ _sections_unfolded = [ "Collision" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="range" index="0"]
 
+visible = false
 shape = SubResource( 2 )
 
 [node name="glow" type="Light2D" parent="." index="3"]
 
+visible = false
 enabled = true
 editor_only = false
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 offset = Vector2( 0, 0 )
-texture_scale = 0.3
+texture_scale = 0.4
 color = Color( 0.123352, 0.221915, 0.671875, 1 )
-energy = 1.4
+energy = 4.0
 mode = 0
 range_height = 0.0
 range_z_min = -1024
@@ -91,10 +99,12 @@ _sections_unfolded = [ "Range" ]
 
 [node name="cooldown" type="Timer" parent="." index="4"]
 
-process_mode = 1
-wait_time = 0.8
+process_mode = 0
+wait_time = 1.5
 one_shot = false
 autostart = false
+
+[node name="line_of_sight" parent="." index="5" instance=ExtResource( 5 )]
 
 [connection signal="body_entered" from="range" to="." method="_on_range_body_entered"]
 

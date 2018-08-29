@@ -13,10 +13,6 @@ var grounded = true
 
 func _physics_process(delta):
 
-#	for body in get_colliding_bodies():
-#		if body.is_in_group("environment"):
-#			grounded = true
-
 	if Input.is_action_pressed("thrust"):
 		thrust()
 	
@@ -33,7 +29,6 @@ func _physics_process(delta):
 		
 	if Input.is_action_just_pressed("grapple"):
 		if grappling:
-#			print("%s is releasing %s" % [get_name(), grappling.get_name()])
 			grappling.grapple = true
 			grappling.grappled_by = null
 			grappling = null
@@ -63,13 +58,11 @@ func thrust():
 	
 func add_fuel(amount):
 	pass
-#	print("%s has received %d fuel" % [self.get_name(), amount])
 	
 	
 func grapple_object(object):
 	
 	if not grappling:
-#		print("%s has grappled %s" % [self.get_name(), object.get_name()])
 		grappling = object
 		$grapple.node_b = object.get_path()
 		$grapple_on_sound.play()

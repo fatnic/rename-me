@@ -36,7 +36,7 @@ linear_damp = -1.0
 angular_velocity = 0.0
 angular_damp = -1.0
 script = ExtResource( 1 )
-_sections_unfolded = [ "Collision", "Visibility" ]
+_sections_unfolded = [ "Collision", "Transform", "Visibility" ]
 collect = true
 grapple = true
 fuel_amount = 10
@@ -45,12 +45,12 @@ fuel_amount = 10
 
 light_mask = 4
 texture = ExtResource( 2 )
-_sections_unfolded = [ "Visibility" ]
+_sections_unfolded = [ "Transform", "Visibility" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
 
-visible = false
 shape = SubResource( 1 )
+_sections_unfolded = [ "Transform" ]
 
 [node name="glow" type="Light2D" parent="." index="2"]
 
