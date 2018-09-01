@@ -11,16 +11,15 @@
 
 [sub_resource type="Gradient" id=1]
 
-offsets = PoolRealArray( 0, 0.175439, 0.391813 )
-colors = PoolColorArray( 1, 0.0351562, 0.0351562, 1, 0.960938, 0.588504, 0.00750732, 1, 0.360421, 0.871094, 0.102081, 1 )
+offsets = PoolRealArray( 0, 0.116959, 0.251462 )
+colors = PoolColorArray( 1, 0.0351562, 0.0351562, 1, 0.960938, 0.901349, 0.00750733, 1, 0.360421, 0.871094, 0.102081, 1 )
 
 [sub_resource type="Gradient" id=2]
 
-offsets = PoolRealArray( 0, 0.00584795, 0.362573 )
-colors = PoolColorArray( 0, 0, 0, 1, 0.949219, 0.0222473, 0.0222473, 1, 0.238647, 0.279906, 0.71875, 1 )
-_sections_unfolded = [ "Resource" ]
+offsets = PoolRealArray( 0, 0.00584795, 0.298246 )
+colors = PoolColorArray( 0, 0, 0, 1, 0.9375, 0.0476074, 0.0476074, 1, 0.238647, 0.279906, 0.71875, 1 )
 
-[node name="main" type="Node2D"]
+[node name="main" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
 __meta__ = {
@@ -34,6 +33,7 @@ _sections_unfolded = [ "Material", "Transform", "Visibility", "Z Index" ]
 [node name="ship_one" parent="." index="1" instance=ExtResource( 3 )]
 
 position = Vector2( 103, 330 )
+fuel_use = 0.5
 
 [node name="ui" type="CanvasLayer" parent="." index="2"]
 

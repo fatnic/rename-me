@@ -37,7 +37,6 @@ func on_collect(collector):
 		
 
 func on_grapple(grappler):
-#	print("grappled by %s" % grappler.get_name())
 	grappled_by = grappler
 	grappler.call_deferred("grapple_object", self)
 

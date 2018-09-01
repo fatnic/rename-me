@@ -3,11 +3,13 @@ extends RigidBody2D
 export (int) var thrust = 22
 export (float) var turn_speed = 0.8
 
-export (float) var fuel = 0
+var fuel = 0
+export (float) var start_fuel = 100
 export (float) var max_fuel = 100
 export (float) var fuel_use = 0.2
 
-export (float) var health = 0
+var health = 0
+export (float) var start_health = 0
 export (float) var max_health = 100
 
 var grappling = null
@@ -27,8 +29,13 @@ func _ready():
 func _physics_process(delta):
 
 	if Input.is_action_pressed("thrust"):
-		thrust()
-	
+		if fuel > 0:
+			thrust()
+		else:
+			$exhaust_flame.emitting = false
+			$exhaust_glow.enabled = false
+			$exhaust_sound.stop()
+			
 	if Input.is_action_just_released("thrust"):
 		$exhaust_flame.emitting = false
 		$exhaust_glow.enabled = false
@@ -80,6 +87,8 @@ func change_health(amount):
 	health = clamp(health + amount, 0, max_health)
 	var health_percent = health * 100 / max_health
 	emit_signal("health_change", health_percent)	
+	if amount > 0:
+		$fix.play()
 	
 	
 func punch(vel):

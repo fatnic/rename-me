@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://scripts/ship_one.gd" type="Script" id=1]
 [ext_resource path="res://assets/images/ship_one.png" type="Texture" id=2]
@@ -6,6 +6,8 @@
 [ext_resource path="res://scripts/exhaust_glow.gd" type="Script" id=4]
 [ext_resource path="res://assets/sounds/thrust_sound.ogg" type="AudioStream" id=5]
 [ext_resource path="res://assets/sounds/grapple_on.ogg" type="AudioStream" id=6]
+[ext_resource path="res://assets/sounds/ping.ogg" type="AudioStream" id=7]
+[ext_resource path="res://assets/sounds/fix.ogg" type="AudioStream" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -103,10 +105,10 @@ script = ExtResource( 1 )
 _sections_unfolded = [ "Angular", "Collision", "Visibility" ]
 thrust = 22
 turn_speed = 0.8
-fuel = 0
+start_fuel = 50.0
 max_fuel = 100
 fuel_use = 0.2
-health = 0
+start_health = 80.0
 max_health = 100
 
 [node name="Sprite" type="Sprite" parent="." index="0"]
@@ -231,5 +233,23 @@ playback_speed = 1.0
 playback/active = false
 playback/repeat = false
 playback/speed = 1.0
+
+[node name="bullet_ping" type="AudioStreamPlayer" parent="." index="10"]
+
+stream = ExtResource( 7 )
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = false
+mix_target = 0
+bus = "Master"
+
+[node name="fix" type="AudioStreamPlayer" parent="." index="11"]
+
+stream = ExtResource( 8 )
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = false
+mix_target = 0
+bus = "Master"
 
 

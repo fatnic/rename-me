@@ -11,8 +11,8 @@ func _ready():
 	add_signals_from_group("player", $ui/guages, "health_change")
 		
 	for p in get_tree().get_nodes_in_group("player"): 
-		p.call_deferred("change_fuel", 50)
-		p.call_deferred("change_health", 100)
+		p.call_deferred("change_fuel", p.start_fuel)
+		p.call_deferred("change_health", p.start_health)
 	
 	
 func _process(delta):
