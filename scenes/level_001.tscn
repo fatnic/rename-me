@@ -8,7 +8,7 @@
 [ext_resource path="res://entities/cannon.tscn" type="PackedScene" id=6]
 [ext_resource path="res://entities/block_destructable.tscn" type="PackedScene" id=7]
 
-[node name="level_001" type="Node2D"]
+[node name="level_001" type="Node2D" index="0"]
 
 _sections_unfolded = [ "Transform", "Visibility", "Z Index" ]
 
@@ -94,13 +94,9 @@ position = Vector2( 600, 317 )
 
 position = Vector2( 542, 78 )
 
-[node name="health_crate" parent="interactables" index="6" instance=ExtResource( 4 )]
+[node name="health_crate2" parent="interactables" index="6" instance=ExtResource( 4 )]
 
-position = Vector2( 490, 332 )
-
-[node name="health_crate2" parent="interactables" index="7" instance=ExtResource( 4 )]
-
-position = Vector2( 320, 156 )
+position = Vector2( 320, 158 )
 
 [node name="antagonists" type="Node2D" parent="." index="3"]
 

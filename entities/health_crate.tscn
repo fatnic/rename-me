@@ -35,6 +35,7 @@ health_amount = 25
 
 [node name="interactable" parent="." index="0" instance=ExtResource( 3 )]
 
+visible = false
 interact_radius = 15
 
 [node name="glow" type="Light2D" parent="." index="1"]
@@ -43,8 +44,8 @@ enabled = true
 editor_only = false
 texture = ExtResource( 4 )
 offset = Vector2( 0, 0 )
-texture_scale = 0.3
-color = Color( 0.32019, 0.344914, 0.953125, 1 )
+texture_scale = 0.15
+color = Color( 0.310287, 0.335551, 0.957031, 1 )
 energy = 1.0
 mode = 0
 range_height = 0.0
