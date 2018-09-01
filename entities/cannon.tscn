@@ -14,7 +14,7 @@ extents = Vector2( 8, 8 )
 [sub_resource type="CircleShape2D" id=2]
 
 custom_solver_bias = 0.0
-radius = 161.003
+radius = 250.0
 
 [node name="cannon" type="RigidBody2D" groups=[
 "weapon",
@@ -41,6 +41,7 @@ angular_velocity = 0.0
 angular_damp = -1.0
 script = ExtResource( 1 )
 _sections_unfolded = [ "Collision", "Visibility", "Z Index" ]
+sight_range = 100
 ammo = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="." index="0"]
@@ -54,7 +55,6 @@ shape = SubResource( 1 )
 
 [node name="range" type="Area2D" parent="." index="2"]
 
-editor/display_folded = true
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0

@@ -76,7 +76,7 @@ anim_offset_random = 0.0
 anim_loop = false
 _sections_unfolded = [ "Color" ]
 
-[node name="ship_one" type="RigidBody2D" index="0" groups=[
+[node name="ship_one" type="RigidBody2D" groups=[
 "player",
 ]]
 
@@ -102,10 +102,12 @@ angular_damp = 1.0
 script = ExtResource( 1 )
 _sections_unfolded = [ "Angular", "Collision", "Visibility" ]
 thrust = 22
-max_thrust = 100
 turn_speed = 0.8
-fuel = 100
+fuel = 0
 max_fuel = 100
+fuel_use = 0.2
+health = 0
+max_health = 100
 
 [node name="Sprite" type="Sprite" parent="." index="0"]
 

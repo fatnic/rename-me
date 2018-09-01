@@ -39,7 +39,7 @@ script = ExtResource( 1 )
 _sections_unfolded = [ "Collision", "Transform", "Visibility" ]
 collect = true
 grapple = true
-fuel_amount = 10
+fuel_amount = 25
 
 [node name="sprite" type="Sprite" parent="." index="0"]
 

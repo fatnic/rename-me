@@ -5,7 +5,7 @@ export (bool) var collect = true
 export (bool) var grapple = true
 var grappled_by = null
 
-export (int) var fuel_amount = 10
+export (int) var fuel_amount = 25
 
 signal spawn_explosion
 
@@ -19,14 +19,15 @@ func _physics_process(delta):
 					
 
 func explode():
+		if grappled_by: grappled_by.call("release_grapple")
 		emit_signal("spawn_explosion", global_position, 20, 0.3)
 		queue_free()
 	
 
 func on_collect(collector):
 	
-	if collector.has_method("add_fuel"):
-		collector.call_deferred("add_fuel", fuel_amount)
+	if collector.has_method("change_fuel"):
+		collector.call_deferred("change_fuel", fuel_amount)
 		fuel_amount = 0
 		remove_from_group("explosive")
 		$interactable.collect = false

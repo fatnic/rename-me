@@ -13,12 +13,12 @@ func start(target, pos, dir):
 
 
 func _process(delta):
+
 	var hit = move_and_collide(velocity * delta)
+
 	if hit:
 		if hit.collider.is_in_group("explisive"): hit.collider.call_deferred("epxplode")
+		if hit.collider.is_in_group("player"):
+			hit.collider.punch(velocity.normalized() * 1.0)
+			hit.collider.call_deferred("change_health", -2)
 		queue_free()
-	
-
-#func _on_bullet_body_entered(body):	
-#	if body.is_in_group("explosive"): body.call_deferred("explode")
-#	queue_free()

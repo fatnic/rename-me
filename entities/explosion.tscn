@@ -28,7 +28,7 @@ tracks/0/keys = {
 custom_solver_bias = 0.0
 radius = 20.0
 
-[node name="explosion" type="Node2D"]
+[node name="explosion" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
 

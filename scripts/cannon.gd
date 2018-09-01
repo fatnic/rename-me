@@ -1,11 +1,16 @@
 extends RigidBody2D
 
+export (int) var sight_range = 100
 export (PackedScene) var ammo
 
 var target = null
 var on_cooldown = false
 
 signal fire_weapon
+
+func _ready():
+	$range/CollisionShape2D.shape.radius = sight_range
+
 
 func _process(delta):
 				

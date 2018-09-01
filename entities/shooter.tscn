@@ -15,7 +15,7 @@ radius = 5.0
 [sub_resource type="CircleShape2D" id=2]
 
 custom_solver_bias = 0.0
-radius = 150.0
+radius = 250.0
 
 [node name="shooter" type="StaticBody2D" groups=[
 "weapon",
@@ -30,6 +30,7 @@ friction = 1.0
 bounce = 0.0
 script = ExtResource( 1 )
 _sections_unfolded = [ "Collision", "Visibility" ]
+sight_range = 100
 ammo = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="." index="0"]
@@ -51,7 +52,6 @@ autostart = false
 
 [node name="range" type="Area2D" parent="." index="3"]
 
-visible = false
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
@@ -65,6 +65,7 @@ _sections_unfolded = [ "Collision" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="range" index="0"]
 
+visible = false
 shape = SubResource( 2 )
 
 [node name="gunshot" type="AudioStreamPlayer" parent="." index="4"]
