@@ -1,0 +1,202 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://scripts/guages.gd" type="Script" id=1]
+[ext_resource path="res://assets/images/progress_bar.png" type="Texture" id=2]
+[ext_resource path="res://assets/images/bar_bg.png" type="Texture" id=3]
+[ext_resource path="res://assets/images/fuel_guage.png" type="Texture" id=4]
+[ext_resource path="res://assets/images/health_bar.png" type="Texture" id=5]
+
+[sub_resource type="Gradient" id=1]
+
+offsets = PoolRealArray( 0, 0.116959, 0.251462 )
+colors = PoolColorArray( 1, 0.0351562, 0.0351562, 1, 0.960938, 0.901349, 0.00750733, 1, 0.360421, 0.871094, 0.102081, 1 )
+
+[sub_resource type="Gradient" id=2]
+
+offsets = PoolRealArray( 0, 0.00584795, 0.298246 )
+colors = PoolColorArray( 0, 0, 0, 1, 0.9375, 0.0476074, 0.0476074, 1, 0.238647, 0.279906, 0.71875, 1 )
+
+[node name="ui" type="CanvasLayer"]
+
+layer = 10
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+_sections_unfolded = [ "Focus", "Mouse", "Size Flags", "Theme", "Visibility" ]
+
+[node name="guages" type="VBoxContainer" parent="." index="0"]
+
+light_mask = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 25.0
+margin_top = 15.0
+margin_right = 64.0
+margin_bottom = 64.0
+grow_vertical = 0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_constants/separation = 10
+alignment = 0
+script = ExtResource( 1 )
+_sections_unfolded = [ "Anchor", "Focus", "Grow Direction", "Hint", "Margin", "Visibility" ]
+fuel_guage_gradient = SubResource( 1 )
+health_guage_gradient = SubResource( 2 )
+
+[node name="fuel_guage" type="TextureProgress" parent="guages" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 60.0
+margin_bottom = 3.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+min_value = 0.0
+max_value = 100.0
+step = 1.0
+page = 0.0
+value = 50.0
+exp_edit = false
+rounded = false
+texture_under = null
+texture_over = null
+texture_progress = ExtResource( 2 )
+radial_fill_degrees = 360.0
+radial_center_offset = Vector2( 0, 0 )
+nine_patch_stretch = false
+_sections_unfolded = [ "Anchor", "Margin", "Textures" ]
+
+[node name="bg" type="TextureRect" parent="guages/fuel_guage" index="0"]
+
+show_behind_parent = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -12.0
+margin_top = -3.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+texture = ExtResource( 3 )
+stretch_mode = 0
+_sections_unfolded = [ "Anchor", "Margin", "Visibility" ]
+
+[node name="surround" type="TextureRect" parent="guages/fuel_guage" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -12.0
+margin_top = -3.0
+margin_right = 40.0
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+texture = ExtResource( 4 )
+stretch_mode = 0
+_sections_unfolded = [ "Anchor", "Margin" ]
+
+[node name="health_guage" type="TextureProgress" parent="guages" index="1"]
+
+editor/display_folded = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 13.0
+margin_right = 60.0
+margin_bottom = 16.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+min_value = 0.0
+max_value = 100.0
+step = 1.0
+page = 0.0
+value = 50.0
+exp_edit = false
+rounded = false
+texture_under = null
+texture_over = null
+texture_progress = ExtResource( 2 )
+radial_fill_degrees = 360.0
+radial_center_offset = Vector2( 0, 0 )
+nine_patch_stretch = false
+_sections_unfolded = [ "Anchor", "Margin", "Textures" ]
+
+[node name="bg" type="TextureRect" parent="guages/health_guage" index="0"]
+
+show_behind_parent = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -12.0
+margin_top = -3.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+texture = ExtResource( 3 )
+stretch_mode = 0
+_sections_unfolded = [ "Anchor", "Margin", "Visibility" ]
+
+[node name="surround" type="TextureRect" parent="guages/health_guage" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -12.0
+margin_top = -3.0
+margin_right = 40.0
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+texture = ExtResource( 5 )
+stretch_mode = 0
+_sections_unfolded = [ "Anchor", "Margin" ]
+
+[node name="tween" type="Tween" parent="guages" index="2"]
+
+repeat = false
+playback_process_mode = 1
+playback_speed = 1.0
+playback/active = false
+playback/repeat = false
+playback/speed = 1.0
+
+[connection signal="tween_step" from="guages/tween" to="guages" method="_on_tween_tween_step"]
+
+

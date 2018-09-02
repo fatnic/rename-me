@@ -75,8 +75,9 @@ anim_offset_random = 0.0
 anim_loop = false
 _sections_unfolded = [ "Color" ]
 
-[node name="rocket_he" type="Area2D" groups=[
+[node name="rocket_he" type="Area2D" index="0" groups=[
 "explosive",
+"lock_on",
 ]]
 
 light_mask = 2
@@ -92,7 +93,7 @@ audio_bus_name = "Master"
 script = ExtResource( 1 )
 _sections_unfolded = [ "Collision", "Visibility", "collision" ]
 speed = 90
-steer_force = 16
+steer_force = 20
 
 [node name="Sprite" type="Sprite" parent="." index="0"]
 

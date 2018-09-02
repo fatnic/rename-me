@@ -2,6 +2,7 @@ extends Node2D
 
 var scn_explosion = load("res://entities/explosion.tscn")
 
+export (Color) var rope_colour
 
 func _ready():
 	add_signals_from_group("explosive", self, "spawn_explosion")
@@ -9,6 +10,7 @@ func _ready():
 	
 	add_signals_from_group("player", $ui/guages, "fuel_change")
 	add_signals_from_group("player", $ui/guages, "health_change")
+	add_signals_from_group("player", self, "spawn_explosion")
 		
 	for p in get_tree().get_nodes_in_group("player"): 
 		p.call_deferred("change_fuel", p.start_fuel)
@@ -43,7 +45,7 @@ func _draw():
 	
 	for player in get_tree().get_nodes_in_group("player"):
 		if player.grappling:
-			draw_line($ship_one.position, $ship_one.grappling.position, Color(0.501, 0.313, 0.176, 1.0), 1.0)
+			draw_line($ship_one.position, $ship_one.grappling.position, rope_colour, 1.0)
 		
 	for bullet in get_tree().get_nodes_in_group("bullet"):
 		draw_circle(bullet.position, bullet.radius, bullet.colour)

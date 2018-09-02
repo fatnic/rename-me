@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/fuel_bar.png-74630f5a0f2247c12847c4812d4b0671.stex"
+path="res://.import/bar_bg.png-7a15d2dd35959d84fffadeb960f19873.stex"
 
 [deps]
 
-source_file="res://assets/images/fuel_bar.png"
-dest_files=[ "res://.import/fuel_bar.png-74630f5a0f2247c12847c4812d4b0671.stex" ]
+source_file="res://assets/images/bar_bg.png"
+dest_files=[ "res://.import/bar_bg.png-7a15d2dd35959d84fffadeb960f19873.stex" ]
 
 [params]
 

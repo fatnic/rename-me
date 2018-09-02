@@ -1,13 +1,14 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://scripts/ship_one.gd" type="Script" id=1]
-[ext_resource path="res://assets/images/ship_one.png" type="Texture" id=2]
-[ext_resource path="res://assets/images/lighting.png" type="Texture" id=3]
-[ext_resource path="res://scripts/exhaust_glow.gd" type="Script" id=4]
-[ext_resource path="res://assets/sounds/thrust_sound.ogg" type="AudioStream" id=5]
-[ext_resource path="res://assets/sounds/grapple_on.ogg" type="AudioStream" id=6]
-[ext_resource path="res://assets/sounds/ping.ogg" type="AudioStream" id=7]
-[ext_resource path="res://assets/sounds/fix.ogg" type="AudioStream" id=8]
+[ext_resource path="res://entities/ship_destroyed.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/images/ship_one.png" type="Texture" id=3]
+[ext_resource path="res://assets/images/lighting.png" type="Texture" id=4]
+[ext_resource path="res://scripts/exhaust_glow.gd" type="Script" id=5]
+[ext_resource path="res://assets/sounds/thrust_sound.ogg" type="AudioStream" id=6]
+[ext_resource path="res://assets/sounds/grapple_on.ogg" type="AudioStream" id=7]
+[ext_resource path="res://assets/sounds/ping.ogg" type="AudioStream" id=8]
+[ext_resource path="res://assets/sounds/fix.ogg" type="AudioStream" id=9]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -103,18 +104,19 @@ angular_velocity = 0.0
 angular_damp = 1.0
 script = ExtResource( 1 )
 _sections_unfolded = [ "Angular", "Collision", "Visibility" ]
+scn_destroyed_ship = ExtResource( 2 )
 thrust = 22
 turn_speed = 0.8
-start_fuel = 50.0
+start_fuel = 100.0
 max_fuel = 100
 fuel_use = 0.2
-start_health = 80.0
+start_health = 100.0
 max_health = 100
 
 [node name="Sprite" type="Sprite" parent="." index="0"]
 
 light_mask = 2
-texture = ExtResource( 2 )
+texture = ExtResource( 3 )
 _sections_unfolded = [ "Visibility" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
@@ -153,7 +155,7 @@ light_mask = 0
 position = Vector2( 0, 3 )
 enabled = false
 editor_only = false
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 offset = Vector2( 0, 0 )
 texture_scale = 1.0
 color = Color( 0.954372, 0.972656, 0.387543, 1 )
@@ -172,14 +174,14 @@ shadow_gradient_length = 0.0
 shadow_filter = 0
 shadow_filter_smooth = 0.0
 shadow_item_cull_mask = 2
-script = ExtResource( 4 )
+script = ExtResource( 5 )
 _sections_unfolded = [ "Range" ]
 tex_scale = Vector2( 0.5, 0.7 )
 energy_scale = Vector2( 0.8, 1.2 )
 
 [node name="exhaust_sound" type="AudioStreamPlayer" parent="." index="4"]
 
-stream = ExtResource( 5 )
+stream = ExtResource( 6 )
 volume_db = 0.0
 pitch_scale = 1.0
 autoplay = false
@@ -209,7 +211,7 @@ damping = 0.5
 
 [node name="grapple_on_sound" type="AudioStreamPlayer" parent="." index="7"]
 
-stream = ExtResource( 6 )
+stream = ExtResource( 7 )
 volume_db = 5.0
 pitch_scale = 0.7
 autoplay = false
@@ -218,7 +220,7 @@ bus = "Master"
 
 [node name="grapple_off_sound" type="AudioStreamPlayer" parent="." index="8"]
 
-stream = ExtResource( 6 )
+stream = ExtResource( 7 )
 volume_db = 10.0
 pitch_scale = 1.2
 autoplay = false
@@ -236,7 +238,7 @@ playback/speed = 1.0
 
 [node name="bullet_ping" type="AudioStreamPlayer" parent="." index="10"]
 
-stream = ExtResource( 7 )
+stream = ExtResource( 8 )
 volume_db = 0.0
 pitch_scale = 1.0
 autoplay = false
@@ -245,7 +247,7 @@ bus = "Master"
 
 [node name="fix" type="AudioStreamPlayer" parent="." index="11"]
 
-stream = ExtResource( 8 )
+stream = ExtResource( 9 )
 volume_db = 0.0
 pitch_scale = 1.0
 autoplay = false

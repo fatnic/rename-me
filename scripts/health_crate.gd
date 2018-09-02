@@ -13,6 +13,7 @@ func on_collect(collector):
 		$tween.interpolate_property($glow, "energy", 1.5, 0.01, 1.0, Tween.TRANS_LINEAR, Tween.EASE_IN)
 		$tween.start()
 		$AnimationPlayer.play("fade_out")
+		collector.get_node("fix").play()
 		
 	
 func _on_AnimationPlayer_animation_finished(anim_name):

@@ -22,7 +22,7 @@ func _process(delta):
 		
 		if hit.collider.is_in_group("player"):
 			hit.collider.punch(velocity.normalized() * 1.0)
-			hit.collider.call_deferred("change_health", -2)
+			hit.collider.call_deferred("change_health", -4)
 			hit.collider.get_node("bullet_ping").play()
 		
 		queue_free()

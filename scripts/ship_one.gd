@@ -1,15 +1,17 @@
 extends RigidBody2D
 
+export (PackedScene) var scn_destroyed_ship
+
 export (int) var thrust = 22
 export (float) var turn_speed = 0.8
 
-var fuel = 0
+var fuel = 1
 export (float) var start_fuel = 100
 export (float) var max_fuel = 100
 export (float) var fuel_use = 0.2
 
-var health = 0
-export (float) var start_health = 0
+var health = 1
+export (float) var start_health = 100
 export (float) var max_health = 100
 
 var grappling = null
@@ -21,12 +23,12 @@ var integrated_rot = null
 
 signal fuel_change
 signal health_change
-
-func _ready():
-	pass
-	
+signal spawn_explosion
 
 func _physics_process(delta):
+
+	if health == 0:
+		destruct()
 
 	if Input.is_action_pressed("thrust"):
 		if fuel > 0:
@@ -54,8 +56,7 @@ func _physics_process(delta):
 			grappling = null
 			$grapple.node_b = ""
 			$grapple_off_sound.play()
-			
-		
+					
 	if grounded and Input.is_action_pressed("reset"):
 		$tween.interpolate_property(self, "rotation", rotation, 0, 0.6, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 		$tween.start()
@@ -87,8 +88,25 @@ func change_health(amount):
 	health = clamp(health + amount, 0, max_health)
 	var health_percent = health * 100 / max_health
 	emit_signal("health_change", health_percent)	
-	if amount > 0:
-		$fix.play()
+	
+
+func destruct():
+	$exhaust_flame.emitting = false
+	$exhaust_glow.enabled = false
+	$exhaust_sound.stop()
+	release_grapple()
+	
+	for i in get_tree().get_nodes_in_group("lock_on"): i.target = null
+	
+	var ship_destroyed = scn_destroyed_ship.instance()
+	ship_destroyed.position = position
+	ship_destroyed.rotation = rotation
+	ship_destroyed.power = lerp(50, 150, fuel / 100)
+	get_tree().get_root().get_node("main").add_child (ship_destroyed)
+	
+	emit_signal("spawn_explosion", global_position, 0.1, 0.5)
+	
+	queue_free()
 	
 	
 func punch(vel):
