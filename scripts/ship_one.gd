@@ -24,19 +24,22 @@ var integrated_rot = null
 signal fuel_change
 signal health_change
 signal spawn_explosion
+signal death
+
 
 func _physics_process(delta):
 
 	if health == 0:
 		destruct()
+		
 
 	if Input.is_action_pressed("thrust"):
 		if fuel > 0:
 			thrust()
 		else:
-			$exhaust_flame.emitting = false
-			$exhaust_glow.enabled = false
-			$exhaust_sound.stop()
+			stop_engine()
+			emit_signal("death", "you ran out of gas!")
+			
 			
 	if Input.is_action_just_released("thrust"):
 		$exhaust_flame.emitting = false
@@ -91,9 +94,8 @@ func change_health(amount):
 	
 
 func destruct():
-	$exhaust_flame.emitting = false
-	$exhaust_glow.enabled = false
-	$exhaust_sound.stop()
+	emit_signal("death", "you exploded... cos you're shit")
+	stop_engine()
 	release_grapple()
 	
 	for i in get_tree().get_nodes_in_group("lock_on"): i.target = null
@@ -103,9 +105,7 @@ func destruct():
 	ship_destroyed.rotation = rotation
 	ship_destroyed.power = lerp(50, 150, fuel / 100)
 	get_tree().get_root().get_node("main").add_child (ship_destroyed)
-	
-	emit_signal("spawn_explosion", global_position, 0.1, 0.5)
-	
+	emit_signal("spawn_explosion", global_position, lerp(10, 30, fuel / 100), fuel / 100)
 	queue_free()
 	
 	
@@ -143,3 +143,9 @@ func release_grapple():
 		$grapple.node_b = ""
 		grappling.grappled_by = null
 		grappling = null
+		
+
+func stop_engine():
+	$exhaust_flame.emitting = false
+	$exhaust_glow.enabled = false
+	$exhaust_sound.stop()

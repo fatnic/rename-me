@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scripts/explosion.gd" type="Script" id=1]
 [ext_resource path="res://assets/images/explosion.png" type="Texture" id=2]
-[ext_resource path="res://assets/sounds/explosion.ogg" type="AudioStream" id=3]
 
 [sub_resource type="Animation" id=1]
 
@@ -28,7 +27,9 @@ tracks/0/keys = {
 custom_solver_bias = 0.0
 radius = 20.0
 
-[node name="explosion" type="Node2D"]
+[node name="explosion" type="Node2D" groups=[
+"sound",
+]]
 
 script = ExtResource( 1 )
 
@@ -51,16 +52,7 @@ playback_speed = 1.0
 anims/explode = SubResource( 1 )
 blend_times = [  ]
 
-[node name="bang" type="AudioStreamPlayer" parent="." index="2"]
-
-stream = ExtResource( 3 )
-volume_db = 0.0
-pitch_scale = 1.0
-autoplay = false
-mix_target = 0
-bus = "Master"
-
-[node name="aoe" type="Area2D" parent="." index="3"]
+[node name="aoe" type="Area2D" parent="." index="2"]
 
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -78,8 +70,6 @@ _sections_unfolded = [ "Collision" ]
 shape = SubResource( 2 )
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
-
-[connection signal="finished" from="bang" to="." method="_on_bang_finished"]
 
 [connection signal="body_entered" from="aoe" to="." method="_on_aoe_body_entered"]
 

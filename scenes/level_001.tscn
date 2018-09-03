@@ -8,7 +8,7 @@
 [ext_resource path="res://entities/cannon.tscn" type="PackedScene" id=6]
 [ext_resource path="res://entities/block_destructable.tscn" type="PackedScene" id=7]
 
-[node name="level_001" type="Node2D"]
+[node name="level_001" type="Node2D" index="0"]
 
 _sections_unfolded = [ "Transform", "Visibility", "Z Index" ]
 
@@ -105,7 +105,6 @@ position = Vector2( 540, 190 )
 
 [node name="antagonists" type="Node2D" parent="." index="3"]
 
-editor/display_folded = true
 __meta__ = {
 "_edit_lock_": true
 }

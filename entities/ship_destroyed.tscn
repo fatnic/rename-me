@@ -48,7 +48,7 @@ extents = Vector2( 0.5, 1 )
 custom_solver_bias = 0.0
 extents = Vector2( 2, 1 )
 
-[node name="ship_destroyed" type="Node2D" index="0"]
+[node name="ship_destroyed" type="Node2D"]
 
 position = Vector2( -1, -3 )
 script = ExtResource( 1 )
