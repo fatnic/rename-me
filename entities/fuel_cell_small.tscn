@@ -41,11 +41,11 @@ collect = true
 grapple = true
 fuel_amount = 25
 
-[node name="sprite" type="Sprite" parent="." index="0"]
+[node name="Sprite" type="Sprite" parent="." index="0"]
 
 light_mask = 4
 texture = ExtResource( 2 )
-_sections_unfolded = [ "Transform", "Visibility" ]
+_sections_unfolded = [ "Offset" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
 
@@ -75,11 +75,12 @@ shadow_gradient_length = 0.0
 shadow_filter = 0
 shadow_filter_smooth = 0.0
 shadow_item_cull_mask = 1
-_sections_unfolded = [ "Range", "Visibility" ]
+_sections_unfolded = [ "Range", "Transform", "Visibility" ]
 
 [node name="interactable" parent="." index="3" instance=ExtResource( 4 )]
 
 visible = false
+_sections_unfolded = [ "Collision", "Pickable", "Transform" ]
 
 [node name="tween" type="Tween" parent="." index="4"]
 

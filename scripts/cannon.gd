@@ -17,7 +17,7 @@ func _process(delta):
 	if not on_cooldown and target and $line_of_sight.seen:
 		on_cooldown = true
 		$cooldown.start()
-		emit_signal("fire_weapon", ammo, target, position + Vector2(-4, 2), Vector2(1, 0))
+		emit_signal("fire_weapon", ammo, target, position, target.position - position)
 		
 
 func _on_range_body_entered(body):

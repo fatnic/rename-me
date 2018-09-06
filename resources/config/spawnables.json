@@ -1,0 +1,47 @@
+[
+        {
+            "colour": "0,1,0,1",
+            "scene": "res://entities/fuel_cell_small.tscn",
+            "parent": "interactables",
+            "offset": [0, 6.5]
+        },
+        {
+            "colour": "0,0,1,1",
+            "scene": "res://entities/health_crate.tscn",
+            "parent": "interactables",
+            "offset": [0, 6]
+        },
+        {
+            "colour": "0.4,0.2,0.4,1",
+            "scene": "res://entities/blackbox.tscn",
+            "parent": "interactables",
+            "offset": [0, 7]
+        },
+
+        {
+            "colour": "1,0,0,1",
+            "scene": "res://entities/cannon.tscn",
+            "parent": "antagonists",
+            "offset": [0, 0]
+        },
+        {
+            "colour": "1,1,0,1",
+            "scene": "res://entities/shooter.tscn",
+            "parent": "antagonists",
+            "offset": [0, 0]
+        },
+
+        {
+            "colour": "0.8,0.4,0.2,1",
+            "scene": "res://entities/block_destructable.tscn",
+            "parent": "destructables",
+            "offset": [0, 0]
+        },
+
+        {
+            "colour": "1,1,1,1",
+            "scene": "res://entities/ship_one.tscn",
+            "parent": "actors",
+            "offset": [0, 4]
+        }
+]

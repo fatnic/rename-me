@@ -17,7 +17,7 @@ radius = 5.0
 custom_solver_bias = 0.0
 radius = 250.0
 
-[node name="shooter" type="StaticBody2D" index="0" groups=[
+[node name="shooter" type="StaticBody2D" groups=[
 "weapon",
 ]]
 
@@ -30,12 +30,14 @@ friction = 1.0
 bounce = 0.0
 script = ExtResource( 1 )
 _sections_unfolded = [ "Collision", "Visibility" ]
-sight_range = 100
+sight_range = 200
 ammo = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="." index="0"]
 
 texture = ExtResource( 3 )
+flip_v = true
+_sections_unfolded = [ "Offset" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
 

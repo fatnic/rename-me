@@ -1,4 +1,4 @@
-extends Sprite
+extends Node2D
 
 export (bool) var collect = true
 

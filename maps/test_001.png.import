@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/rock_tiles_normal.png-9156f0a6934491b6e0c7fcb363c56da5.stex"
+path="res://.import/test_001.png-086ad7a486bc999926be2921695d8f99.stex"
 
 [deps]
 
-source_file="res://assets/images/rock_tiles_normal.png"
-dest_files=[ "res://.import/rock_tiles_normal.png-9156f0a6934491b6e0c7fcb363c56da5.stex" ]
+source_file="res://maps/test_001.png"
+dest_files=[ "res://.import/test_001.png-086ad7a486bc999926be2921695d8f99.stex" ]
 
 [params]
 

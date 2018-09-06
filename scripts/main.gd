@@ -2,7 +2,7 @@ extends Node2D
 
 var scn_explosion = load("res://entities/explosion.tscn")
 
-export (Color) var rope_colour
+#export (Color) var rope_colour
 
 var death_message = ""
 
@@ -60,15 +60,13 @@ func death(message):
 	$top_overlay/death_screen/message.text = message
 	$top_overlay/death_screen/timer.start()
 	
-
-func _draw():
-	
-	for player in get_tree().get_nodes_in_group("player"):
-		if player.grappling:
-			draw_line($ship_one.position, $ship_one.grappling.position, rope_colour, 1.0)
+#
+#func _draw():
+#
+#	for player in get_tree().get_nodes_in_group("player"):
+#		if player.grappling:
+#			draw_line(player.position, player.grappling.position, rope_colour, 1.0)
 		
-	for bullet in get_tree().get_nodes_in_group("bullet"):
-		draw_circle(bullet.position, bullet.radius, bullet.colour)
 
 func _on_timer_timeout():
 	$top_overlay/anim.play("fade_in")

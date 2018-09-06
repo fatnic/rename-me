@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/rope_segment.png-2412d59ffa351885401543d19a1749d9.stex"
+path="res://.import/tilemap.png-dca211a0db84389a7716cfb44c36ee99.stex"
 
 [deps]
 
-source_file="res://assets/images/rope_segment.png"
-dest_files=[ "res://.import/rope_segment.png-2412d59ffa351885401543d19a1749d9.stex" ]
+source_file="res://assets/images/tilemap.png"
+dest_files=[ "res://.import/tilemap.png-dca211a0db84389a7716cfb44c36ee99.stex" ]
 
 [params]
 

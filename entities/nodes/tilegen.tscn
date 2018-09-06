@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scripts/tilegen.gd" type="Script" id=1]
+
+[node name="tilegen" type="Node2D" index="0"]
+
+script = ExtResource( 1 )
+map = null
+is_autotile = false
+generate = false
+tiles = null
+
+

@@ -14,6 +14,8 @@ var health = 1
 export (float) var start_health = 100
 export (float) var max_health = 100
 
+export (Color, RGBA) var rope_colour
+
 var grappling = null
 var grounded = true
 
@@ -26,6 +28,9 @@ signal health_change
 signal spawn_explosion
 signal death
 
+
+func _ready():
+	pass
 
 func _physics_process(delta):
 
@@ -127,6 +132,11 @@ func _integrate_forces(state):
 		
 	state.set_transform(xform)
 	
+	
+func _draw():
+	if grappling:
+		draw_line(position, grappling.position, rope_colour, 1.0)
+		
 	
 func grapple_object(object):
 	
