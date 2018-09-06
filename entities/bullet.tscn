@@ -8,11 +8,12 @@
 custom_solver_bias = 0.0
 radius = 0.5
 
-[node name="bullet" type="KinematicBody2D" index="0" groups=[
+[node name="bullet" type="KinematicBody2D" groups=[
 "bullet",
 ]]
 
-z_index = 100
+z_index = 10
+z_as_relative = false
 input_pickable = false
 collision_layer = 64
 collision_mask = 23
@@ -27,8 +28,9 @@ speed = 170
 
 modulate = Color( 0.771888, 0.777344, 0.078949, 1 )
 scale = Vector2( 0.5, 0.5 )
+z_index = 40
 texture = ExtResource( 2 )
-_sections_unfolded = [ "Transform", "Visibility" ]
+_sections_unfolded = [ "Transform", "Visibility", "Z Index" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
 

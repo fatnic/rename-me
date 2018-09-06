@@ -22,13 +22,17 @@
             "colour": "1,0,0,1",
             "scene": "res://entities/cannon.tscn",
             "parent": "antagonists",
-            "offset": [0, 0]
+            "offset": [0, 3],
+            "clamp_v": true,
+            "clamp_h": true
         },
         {
             "colour": "1,1,0,1",
             "scene": "res://entities/shooter.tscn",
             "parent": "antagonists",
-            "offset": [0, 0]
+            "offset": [0, 6],
+            "clamp_v": true,
+            "clamp_h": true
         },
 
         {

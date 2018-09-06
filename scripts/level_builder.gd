@@ -11,6 +11,8 @@ var map_width = 0
 var map_height = 0
 
 var spawnables = {}
+var spawned = []
+
 
 func _ready():
 		pass
@@ -23,6 +25,7 @@ func _process(delta):
 	    
 		parse_json_spawnables()
 		remove_children([$interactables, $antagonists, $destructables, $actors])
+		spawned = []
 		parse_image()
 		
 		
@@ -33,9 +36,12 @@ func remove_children(nodes):
 
 func parse_json_spawnables():
 	for s in get_json("res://resources/config/spawnables.json"):
-		spawnables[s.colour] = { "scn": s.scene, "parent": s.parent, "offset": Vector2(s.offset[0], s.offset[1]) }
+		spawnables[s.colour] = { "scn": s.scene, "parent": s.parent }
+		if s.has("offset"): spawnables[s.colour].offset = Vector2(s.offset[0], s.offset[1])
+		if s.has("clamp_v"): spawnables[s.colour].clamp_v = s.clamp_v
+		if s.has("clamp_h"): spawnables[s.colour].clamp_h = s.clamp_h
 		
-		
+				
 func get_json(file):
 	var data_file = File.new()
 	data_file.open(file, File.READ)
@@ -68,12 +74,13 @@ func parse_image():
 				continue
 			
 			if spawnables.has(c):
-				add_spawnable(x, y, spawnables[c])
+				spawned.append([x, y, spawnables[c]])
 				continue
 			
 	
 	image.unlock()
 	autotile()
+	add_spawned_to_map()
 	
 	
 func autotile():
@@ -96,11 +103,30 @@ func calc_tile(x, y):
 		
 	return tile
 	
+	
+func add_spawned_to_map():
+	for spawn in spawned:
+		add_spawnable(spawn[0], spawn[1], spawn[2])
+		
 
 func add_spawnable(x, y, item):
 	var s = load(item.scn).instance()
 	var sprite_size = s.get_node("Sprite").texture.get_size()
 	var world_pos = $environment.map_to_world(Vector2(x, y))
-	s.position = world_pos + Vector2(8, 8) + Vector2(item.offset.x, item.offset.y)
+	s.rotation = check_clamp(item, x, y)
+	s.position = world_pos + Vector2(8, 8) + Vector2(item.offset.x, item.offset.y).rotated(s.rotation)
 	get_node(item.parent).add_child(s)
 	s.set_owner(get_tree().get_edited_scene_root())
+	
+
+func check_clamp(item, x, y):
+	
+	if item.has("clamp_v"):
+		if $environment.get_cell(x, y + 1) > -1: return 0
+		if $environment.get_cell(x, y - 1) > -1: return deg2rad(180)
+	
+	if item.has("clamp_h"):
+		if $environment.get_cell(x + 1, y) > -1: return deg2rad(270)
+		if $environment.get_cell(x - 1, y) > -1: return deg2rad(90)
+		
+	return 0

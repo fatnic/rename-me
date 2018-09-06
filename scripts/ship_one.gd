@@ -43,7 +43,7 @@ func _physics_process(delta):
 			thrust()
 		else:
 			stop_engine()
-			emit_signal("death", "you ran out of gas!")
+			emit_signal("death", "a lack of fuel seems to be the problem...", 2.5)
 			
 			
 	if Input.is_action_just_released("thrust"):
@@ -99,7 +99,7 @@ func change_health(amount):
 	
 
 func destruct():
-	emit_signal("death", "you exploded... cos you're shit")
+	emit_signal("death", "and it exploded...", 5)
 	stop_engine()
 	release_grapple()
 	

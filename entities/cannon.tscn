@@ -20,7 +20,7 @@ radius = 250.0
 "weapon",
 ]]
 
-z_index = 51
+z_index = 40
 input_pickable = false
 collision_layer = 0
 collision_mask = 23

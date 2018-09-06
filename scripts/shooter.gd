@@ -20,7 +20,7 @@ func _process(delta):
 		$gunshot.play()
 		$flash.enabled = true
 		$flash/timer.start()
-		emit_signal("fire_weapon", ammo, target, position, (target.position - position).normalized())
+		emit_signal("fire_weapon", ammo, target, $turret.global_position, (target.position - position).normalized())
 		
 
 func _on_range_body_entered(body):
