@@ -68,11 +68,7 @@ func _physics_process(delta):
 	if grounded and Input.is_action_pressed("reset"):
 		$tween.interpolate_property(self, "rotation", rotation, 0, 0.6, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 		$tween.start()
-		
 
-func _process(delta):
-	update()
-		
 
 func rotate_ship(direction):
 	angular_velocity = direction * turn_speed
@@ -131,12 +127,7 @@ func _integrate_forces(state):
 		integrated_rot = null
 		
 	state.set_transform(xform)
-	
-	
-func _draw():
-	if grappling:
-		draw_line(position, grappling.position, rope_colour, 1.0)
-		
+			
 	
 func grapple_object(object):
 	

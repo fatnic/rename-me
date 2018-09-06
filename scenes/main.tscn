@@ -1,31 +1,21 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://scripts/main.gd" type="Script" id=1]
 [ext_resource path="res://scripts/level_builder.gd" type="Script" id=2]
 [ext_resource path="res://maps/test_001.png" type="Texture" id=3]
 [ext_resource path="res://resources/tiles/map_tiles.tres" type="TileSet" id=4]
 [ext_resource path="res://entities/fuel_cell_small.tscn" type="PackedScene" id=5]
-[ext_resource path="res://scripts/fuel_cell_small.gd" type="Script" id=6]
-[ext_resource path="res://entities/blackbox.tscn" type="PackedScene" id=7]
-[ext_resource path="res://scripts/blackbox.gd" type="Script" id=8]
-[ext_resource path="res://entities/health_crate.tscn" type="PackedScene" id=9]
-[ext_resource path="res://scripts/health_crate.gd" type="Script" id=10]
-[ext_resource path="res://entities/cannon.tscn" type="PackedScene" id=11]
-[ext_resource path="res://scripts/cannon.gd" type="Script" id=12]
-[ext_resource path="res://entities/rocket_he.tscn" type="PackedScene" id=13]
-[ext_resource path="res://entities/shooter.tscn" type="PackedScene" id=14]
-[ext_resource path="res://scripts/shooter.gd" type="Script" id=15]
-[ext_resource path="res://entities/bullet.tscn" type="PackedScene" id=16]
-[ext_resource path="res://entities/block_destructable.tscn" type="PackedScene" id=17]
-[ext_resource path="res://scripts/block_destructable.gd" type="Script" id=18]
-[ext_resource path="res://entities/ship_one.tscn" type="PackedScene" id=19]
-[ext_resource path="res://scripts/ship_one.gd" type="Script" id=20]
-[ext_resource path="res://entities/ship_destroyed.tscn" type="PackedScene" id=21]
-[ext_resource path="res://scenes/drawing.gd" type="Script" id=22]
-[ext_resource path="res://resources/dynamic_fonts/pixel-16.tres" type="DynamicFont" id=23]
-[ext_resource path="res://scenes/ui.tscn" type="PackedScene" id=24]
-[ext_resource path="res://assets/sounds/horror_bg.ogg" type="AudioStream" id=25]
-[ext_resource path="res://assets/sounds/explosion.ogg" type="AudioStream" id=26]
+[ext_resource path="res://entities/blackbox.tscn" type="PackedScene" id=6]
+[ext_resource path="res://entities/health_crate.tscn" type="PackedScene" id=7]
+[ext_resource path="res://entities/shooter.tscn" type="PackedScene" id=8]
+[ext_resource path="res://entities/cannon.tscn" type="PackedScene" id=9]
+[ext_resource path="res://entities/block_destructable.tscn" type="PackedScene" id=10]
+[ext_resource path="res://entities/ship_one.tscn" type="PackedScene" id=11]
+[ext_resource path="res://scripts/drawing.gd" type="Script" id=12]
+[ext_resource path="res://resources/dynamic_fonts/pixel-16.tres" type="DynamicFont" id=13]
+[ext_resource path="res://scenes/ui.tscn" type="PackedScene" id=14]
+[ext_resource path="res://assets/sounds/horror_bg.ogg" type="AudioStream" id=15]
+[ext_resource path="res://assets/sounds/explosion.ogg" type="AudioStream" id=16]
 
 [sub_resource type="Animation" id=1]
 
@@ -112,291 +102,83 @@ _sections_unfolded = [ "Z Index" ]
 
 editor/display_folded = true
 
-[node name="fuel_cell_small" type="RigidBody2D" parent="level/interactables" index="0" groups=[
-"fuel",
-"explosive",
-] instance=ExtResource( 5 )]
+[node name="fuel_cell_small" parent="level/interactables" index="0" instance=ExtResource( 5 )]
 
-light_mask = 4
 position = Vector2( 296, 126.5 )
-input_pickable = false
-collision_layer = 4
-collision_mask = 5
-mode = 0
-mass = 0.7
-friction = 1.0
-bounce = 0.2
-gravity_scale = 1.0
-custom_integrator = false
-continuous_cd = 0
-contacts_reported = 4
-contact_monitor = true
-sleeping = false
-can_sleep = true
-linear_velocity = Vector2( 0, 0 )
-linear_damp = -1.0
-angular_velocity = 0.0
-angular_damp = -1.0
-script = ExtResource( 6 )
-_sections_unfolded = [ "Collision", "Transform", "Visibility" ]
-collect = true
-grapple = true
-fuel_amount = 25
 
-[node name="blackbox" type="Node2D" parent="level/interactables" index="1" instance=ExtResource( 7 )]
+[node name="blackbox" parent="level/interactables" index="1" instance=ExtResource( 6 )]
 
 position = Vector2( 56, 143 )
-script = ExtResource( 8 )
-collect = true
 
-[node name="fuel_cell_small2" type="RigidBody2D" parent="level/interactables" index="2" groups=[
-"fuel",
-"explosive",
-] instance=ExtResource( 5 )]
+[node name="fuel_cell_small2" parent="level/interactables" index="2" instance=ExtResource( 5 )]
 
-light_mask = 4
 position = Vector2( 536, 174.5 )
-input_pickable = false
-collision_layer = 4
-collision_mask = 5
-mode = 0
-mass = 0.7
-friction = 1.0
-bounce = 0.2
-gravity_scale = 1.0
-custom_integrator = false
-continuous_cd = 0
-contacts_reported = 4
-contact_monitor = true
-sleeping = false
-can_sleep = true
-linear_velocity = Vector2( 0, 0 )
-linear_damp = -1.0
-angular_velocity = 0.0
-angular_damp = -1.0
-script = ExtResource( 6 )
-_sections_unfolded = [ "Collision", "Transform", "Visibility" ]
-collect = true
-grapple = true
-fuel_amount = 25
 
-[node name="health_crate" type="Node2D" parent="level/interactables" index="3" instance=ExtResource( 9 )]
+[node name="health_crate" parent="level/interactables" index="3" instance=ExtResource( 7 )]
 
-light_mask = 4
 position = Vector2( 600, 174 )
-script = ExtResource( 10 )
-_sections_unfolded = [ "Material", "Transform", "Visibility" ]
-collect = true
-health_amount = 25
 
-[node name="health_crate2" type="Node2D" parent="level/interactables" index="4" instance=ExtResource( 9 )]
+[node name="health_crate2" parent="level/interactables" index="4" instance=ExtResource( 7 )]
 
-light_mask = 4
 position = Vector2( 328, 238 )
-script = ExtResource( 10 )
-_sections_unfolded = [ "Material", "Transform", "Visibility" ]
-collect = true
-health_amount = 25
 
-[node name="blackbox2" type="Node2D" parent="level/interactables" index="5" instance=ExtResource( 7 )]
+[node name="blackbox2" parent="level/interactables" index="5" instance=ExtResource( 6 )]
 
 position = Vector2( 568, 255 )
-script = ExtResource( 8 )
-collect = true
 
-[node name="fuel_cell_small3" type="RigidBody2D" parent="level/interactables" index="6" groups=[
-"fuel",
-"explosive",
-] instance=ExtResource( 5 )]
+[node name="fuel_cell_small3" parent="level/interactables" index="6" instance=ExtResource( 5 )]
 
-light_mask = 4
 position = Vector2( 248, 302.5 )
-input_pickable = false
-collision_layer = 4
-collision_mask = 5
-mode = 0
-mass = 0.7
-friction = 1.0
-bounce = 0.2
-gravity_scale = 1.0
-custom_integrator = false
-continuous_cd = 0
-contacts_reported = 4
-contact_monitor = true
-sleeping = false
-can_sleep = true
-linear_velocity = Vector2( 0, 0 )
-linear_damp = -1.0
-angular_velocity = 0.0
-angular_damp = -1.0
-script = ExtResource( 6 )
-_sections_unfolded = [ "Collision", "Transform", "Visibility" ]
-collect = true
-grapple = true
-fuel_amount = 25
 
 [node name="antagonists" type="Node2D" parent="level" index="3"]
 
 editor/display_folded = true
 
-[node name="cannon" type="RigidBody2D" parent="level/antagonists" index="0" groups=[
-"weapon",
-] instance=ExtResource( 11 )]
+[node name="shooter" parent="level/antagonists" index="0" instance=ExtResource( 8 )]
+
+position = Vector2( 504, 82 )
+rotation = 3.14159
+
+[node name="cannon" parent="level/antagonists" index="1" instance=ExtResource( 9 )]
 
 position = Vector2( 213, 184 )
 rotation = 1.5708
-z_index = 40
-input_pickable = false
-collision_layer = 0
-collision_mask = 23
-mode = 3
-mass = 1.0
-friction = 1.0
-bounce = 0.0
-gravity_scale = 1.0
-custom_integrator = false
-continuous_cd = 0
-contacts_reported = 0
-contact_monitor = false
-sleeping = false
-can_sleep = true
-linear_velocity = Vector2( 0, 0 )
-linear_damp = -1.0
-angular_velocity = 0.0
-angular_damp = -1.0
-script = ExtResource( 12 )
-_sections_unfolded = [ "Collision", "Visibility", "Z Index" ]
-sight_range = 200
-ammo = ExtResource( 13 )
 
-[node name="shooter" type="StaticBody2D" parent="level/antagonists" index="1" groups=[
-"weapon",
-] instance=ExtResource( 14 )]
+[node name="shooter2" parent="level/antagonists" index="2" instance=ExtResource( 8 )]
 
 position = Vector2( 88, 194 )
 rotation = 3.14159
-input_pickable = false
-collision_layer = 8
-collision_mask = 3
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 1.0
-bounce = 0.0
-script = ExtResource( 15 )
-_sections_unfolded = [ "Collision", "Transform", "Visibility" ]
-sight_range = 200
-ammo = ExtResource( 16 )
 
 [node name="destructables" type="Node2D" parent="level" index="4"]
 
 editor/display_folded = true
 
-[node name="block_destructable" type="RigidBody2D" parent="level/destructables" index="0" groups=[
-"environment",
-"destructable",
-] instance=ExtResource( 17 )]
+[node name="block_destructable" parent="level/destructables" index="0" instance=ExtResource( 10 )]
 
 position = Vector2( 552, 184 )
-z_index = 50
-input_pickable = false
-collision_layer = 17
-collision_mask = 17
-mode = 3
-mass = 10.0
-friction = 0.2
-bounce = 0.2
-gravity_scale = 1.0
-custom_integrator = false
-continuous_cd = 0
-contacts_reported = 0
-contact_monitor = false
-sleeping = false
-can_sleep = true
-linear_velocity = Vector2( 0, 0 )
-linear_damp = -1.0
-angular_velocity = 0.0
-angular_damp = -1.0
-script = ExtResource( 18 )
-_sections_unfolded = [ "Collision", "Linear", "Z Index" ]
 
-[node name="block_destructable2" type="RigidBody2D" parent="level/destructables" index="1" groups=[
-"environment",
-"destructable",
-] instance=ExtResource( 17 )]
+[node name="block_destructable2" parent="level/destructables" index="1" instance=ExtResource( 10 )]
 
 position = Vector2( 568, 184 )
-z_index = 50
-input_pickable = false
-collision_layer = 17
-collision_mask = 17
-mode = 3
-mass = 10.0
-friction = 0.2
-bounce = 0.2
-gravity_scale = 1.0
-custom_integrator = false
-continuous_cd = 0
-contacts_reported = 0
-contact_monitor = false
-sleeping = false
-can_sleep = true
-linear_velocity = Vector2( 0, 0 )
-linear_damp = -1.0
-angular_velocity = 0.0
-angular_damp = -1.0
-script = ExtResource( 18 )
-_sections_unfolded = [ "Collision", "Linear", "Z Index" ]
 
 [node name="actors" type="Node2D" parent="level" index="5"]
 
 editor/display_folded = true
 
-[node name="ship_one" type="RigidBody2D" parent="level/actors" index="0" groups=[
-"player",
-] instance=ExtResource( 19 )]
+[node name="ship_one" parent="level/actors" index="0" instance=ExtResource( 11 )]
 
-light_mask = 2
 position = Vector2( 520, 172 )
-input_pickable = false
-collision_layer = 2
-collision_mask = 9
-mode = 0
-mass = 10.0
-friction = 1.0
-bounce = 0.0
-gravity_scale = 1.0
-custom_integrator = false
-continuous_cd = 0
-contacts_reported = 0
-contact_monitor = false
-sleeping = false
-can_sleep = true
-linear_velocity = Vector2( 0, 0 )
-linear_damp = -1.0
-angular_velocity = 0.0
-angular_damp = 1.0
-script = ExtResource( 20 )
-_sections_unfolded = [ "Angular", "Collision", "Visibility" ]
-scn_destroyed_ship = ExtResource( 21 )
-thrust = 22
-turn_speed = 0.8
-start_fuel = 100.0
-max_fuel = 100
-fuel_use = 1.0
-start_health = 100.0
-max_health = 100
-rope_colour = Color( 0.328125, 0.304122, 0.1474, 1 )
 
-[node name="drawing" type="Node2D" parent="level" index="6"]
+[node name="drawing" type="Node2D" parent="." index="1"]
 
 light_mask = 8
 z_index = 45
 z_as_relative = false
-script = ExtResource( 22 )
+script = ExtResource( 12 )
 _sections_unfolded = [ "Visibility", "Z Index" ]
 rope_colour = Color( 0.292969, 0.22805, 0.136185, 1 )
 
-[node name="top_overlay" type="CanvasLayer" parent="." index="1"]
+[node name="top_overlay" type="CanvasLayer" parent="." index="2"]
 
 editor/display_folded = true
 layer = 20
@@ -450,7 +232,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = ExtResource( 23 )
+custom_fonts/font = ExtResource( 13 )
 text = "ya ded!"
 align = 1
 percent_visible = 1.0
@@ -475,15 +257,15 @@ playback_speed = 1.0
 anims/fade_in = SubResource( 1 )
 blend_times = [  ]
 
-[node name="ui" parent="." index="2" instance=ExtResource( 24 )]
+[node name="ui" parent="." index="3" instance=ExtResource( 14 )]
 
-[node name="sounds" type="Node" parent="." index="3"]
+[node name="sounds" type="Node" parent="." index="4"]
 
 editor/display_folded = true
 
 [node name="background_music" type="AudioStreamPlayer" parent="sounds" index="0"]
 
-stream = ExtResource( 25 )
+stream = ExtResource( 15 )
 volume_db = -6.0
 pitch_scale = 1.0
 autoplay = true
@@ -492,7 +274,7 @@ bus = "Master"
 
 [node name="explosion" type="AudioStreamPlayer" parent="sounds" index="1"]
 
-stream = ExtResource( 26 )
+stream = ExtResource( 16 )
 volume_db = 0.0
 pitch_scale = 1.0
 autoplay = false
