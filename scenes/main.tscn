@@ -1,21 +1,31 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://scripts/main.gd" type="Script" id=1]
 [ext_resource path="res://scripts/level_builder.gd" type="Script" id=2]
 [ext_resource path="res://maps/test_001.png" type="Texture" id=3]
 [ext_resource path="res://resources/tiles/map_tiles.tres" type="TileSet" id=4]
 [ext_resource path="res://entities/fuel_cell_small.tscn" type="PackedScene" id=5]
-[ext_resource path="res://entities/blackbox.tscn" type="PackedScene" id=6]
-[ext_resource path="res://entities/health_crate.tscn" type="PackedScene" id=7]
-[ext_resource path="res://entities/shooter.tscn" type="PackedScene" id=8]
-[ext_resource path="res://entities/cannon.tscn" type="PackedScene" id=9]
-[ext_resource path="res://entities/block_destructable.tscn" type="PackedScene" id=10]
-[ext_resource path="res://entities/ship_one.tscn" type="PackedScene" id=11]
-[ext_resource path="res://scripts/drawing.gd" type="Script" id=12]
-[ext_resource path="res://resources/dynamic_fonts/pixel-16.tres" type="DynamicFont" id=13]
-[ext_resource path="res://scenes/ui.tscn" type="PackedScene" id=14]
-[ext_resource path="res://assets/sounds/horror_bg.ogg" type="AudioStream" id=15]
-[ext_resource path="res://assets/sounds/explosion.ogg" type="AudioStream" id=16]
+[ext_resource path="res://scripts/fuel_cell_small.gd" type="Script" id=6]
+[ext_resource path="res://entities/blackbox.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scripts/blackbox.gd" type="Script" id=8]
+[ext_resource path="res://entities/health_crate.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scripts/health_crate.gd" type="Script" id=10]
+[ext_resource path="res://entities/cannon.tscn" type="PackedScene" id=11]
+[ext_resource path="res://scripts/cannon.gd" type="Script" id=12]
+[ext_resource path="res://entities/rocket_he.tscn" type="PackedScene" id=13]
+[ext_resource path="res://entities/shooter.tscn" type="PackedScene" id=14]
+[ext_resource path="res://scripts/shooter.gd" type="Script" id=15]
+[ext_resource path="res://entities/bullet.tscn" type="PackedScene" id=16]
+[ext_resource path="res://entities/block_destructable.tscn" type="PackedScene" id=17]
+[ext_resource path="res://scripts/block_destructable.gd" type="Script" id=18]
+[ext_resource path="res://entities/ship_one.tscn" type="PackedScene" id=19]
+[ext_resource path="res://scripts/ship_one.gd" type="Script" id=20]
+[ext_resource path="res://entities/ship_destroyed.tscn" type="PackedScene" id=21]
+[ext_resource path="res://scripts/drawing.gd" type="Script" id=22]
+[ext_resource path="res://resources/dynamic_fonts/pixel-16.tres" type="DynamicFont" id=23]
+[ext_resource path="res://scenes/ui.tscn" type="PackedScene" id=24]
+[ext_resource path="res://assets/sounds/horror_bg.ogg" type="AudioStream" id=25]
+[ext_resource path="res://assets/sounds/explosion.ogg" type="AudioStream" id=26]
 
 [sub_resource type="Animation" id=1]
 
@@ -45,6 +55,7 @@ __meta__ = {
 
 [node name="level" type="Node2D" parent="." index="0"]
 
+editor/display_folded = true
 z_as_relative = false
 script = ExtResource( 2 )
 _sections_unfolded = [ "Transform", "Visibility", "Z Index" ]
@@ -95,86 +106,363 @@ collision_layer = 1
 collision_mask = 1
 occluder_light_mask = 1
 format = 1
-tile_data = PoolIntArray( 0, 15, 0, 1, 15, 0, 2, 15, 0, 3, 15, 0, 4, 15, 0, 5, 15, 0, 6, 11, 0, 7, 11, 0, 8, 11, 0, 9, 11, 0, 10, 11, 0, 11, 11, 0, 12, 11, 0, 13, 15, 0, 14, 15, 0, 15, 15, 0, 16, 15, 0, 17, 15, 0, 18, 15, 0, 19, 15, 0, 20, 15, 0, 21, 15, 0, 22, 15, 0, 23, 15, 0, 24, 15, 0, 25, 15, 0, 26, 15, 0, 27, 15, 0, 28, 15, 0, 29, 15, 0, 30, 15, 0, 31, 15, 0, 32, 15, 0, 33, 15, 0, 34, 15, 0, 35, 15, 0, 36, 15, 0, 37, 15, 0, 38, 15, 0, 39, 15, 0, 65536, 15, 0, 65537, 15, 0, 65538, 11, 0, 65539, 11, 0, 65540, 11, 0, 65541, 9, 0, 65549, 7, 0, 65550, 15, 0, 65551, 15, 0, 65552, 11, 0, 65553, 11, 0, 65554, 11, 0, 65555, 11, 0, 65556, 11, 0, 65557, 11, 0, 65558, 15, 0, 65559, 15, 0, 65560, 15, 0, 65561, 11, 0, 65562, 11, 0, 65563, 11, 0, 65564, 11, 0, 65565, 15, 0, 65566, 15, 0, 65567, 15, 0, 65568, 15, 0, 65569, 15, 0, 65570, 15, 0, 65571, 15, 0, 65572, 15, 0, 65573, 15, 0, 65574, 15, 0, 65575, 15, 0, 131072, 15, 0, 131073, 13, 0, 131085, 7, 0, 131086, 15, 0, 131087, 9, 0, 131094, 3, 0, 131095, 15, 0, 131096, 13, 0, 131101, 3, 0, 131102, 15, 0, 131103, 15, 0, 131104, 15, 0, 131105, 15, 0, 131106, 15, 0, 131107, 11, 0, 131108, 15, 0, 131109, 15, 0, 131110, 15, 0, 131111, 15, 0, 196608, 15, 0, 196609, 9, 0, 196621, 7, 0, 196622, 9, 0, 196631, 3, 0, 196632, 15, 0, 196633, 14, 0, 196634, 12, 0, 196638, 7, 0, 196639, 15, 0, 196640, 11, 0, 196641, 11, 0, 196642, 9, 0, 196644, 7, 0, 196645, 15, 0, 196646, 15, 0, 196647, 15, 0, 262144, 13, 0, 262157, 5, 0, 262168, 3, 0, 262169, 11, 0, 262170, 11, 0, 262171, 12, 0, 262174, 3, 0, 262175, 9, 0, 262180, 3, 0, 262181, 15, 0, 262182, 15, 0, 262183, 15, 0, 327680, 13, 0, 327693, 1, 0, 327707, 1, 0, 327717, 3, 0, 327718, 15, 0, 327719, 15, 0, 393216, 13, 0, 393222, 6, 0, 393223, 14, 0, 393224, 14, 0, 393225, 8, 0, 393254, 7, 0, 393255, 15, 0, 458752, 13, 0, 458757, 6, 0, 458758, 15, 0, 458759, 11, 0, 458760, 9, 0, 458790, 7, 0, 458791, 15, 0, 524288, 15, 0, 524289, 14, 0, 524290, 12, 0, 524293, 7, 0, 524294, 13, 0, 524305, 2, 0, 524306, 10, 0, 524307, 10, 0, 524308, 14, 0, 524309, 12, 0, 524326, 7, 0, 524327, 15, 0, 589824, 15, 0, 589825, 11, 0, 589826, 15, 0, 589827, 14, 0, 589828, 14, 0, 589829, 15, 0, 589830, 15, 0, 589831, 12, 0, 589844, 3, 0, 589845, 15, 0, 589846, 12, 0, 589862, 7, 0, 589863, 15, 0, 655360, 13, 0, 655362, 3, 0, 655363, 11, 0, 655364, 15, 0, 655365, 15, 0, 655366, 15, 0, 655367, 11, 0, 655368, 8, 0, 655381, 3, 0, 655382, 11, 0, 655383, 8, 0, 655386, 2, 0, 655387, 14, 0, 655388, 12, 0, 655391, 4, 0, 655398, 7, 0, 655399, 15, 0, 720896, 13, 0, 720900, 3, 0, 720901, 11, 0, 720902, 9, 0, 720908, 4, 0, 720923, 3, 0, 720924, 11, 0, 720925, 14, 0, 720926, 14, 0, 720927, 15, 0, 720928, 14, 0, 720929, 8, 0, 720932, 2, 0, 720933, 14, 0, 720934, 15, 0, 720935, 15, 0, 786432, 13, 0, 786442, 6, 0, 786443, 14, 0, 786444, 9, 0, 786461, 7, 0, 786462, 11, 0, 786463, 11, 0, 786464, 13, 0, 786469, 7, 0, 786470, 15, 0, 786471, 15, 0, 851968, 15, 0, 851969, 12, 0, 851977, 6, 0, 851978, 15, 0, 851979, 9, 0, 851989, 4, 0, 851997, 1, 0, 852000, 5, 0, 852005, 7, 0, 852006, 15, 0, 852007, 15, 0, 917504, 15, 0, 917505, 15, 0, 917506, 14, 0, 917507, 8, 0, 917512, 6, 0, 917513, 15, 0, 917514, 13, 0, 917525, 7, 0, 917526, 12, 0, 917536, 7, 0, 917537, 12, 0, 917541, 7, 0, 917542, 15, 0, 917543, 15, 0, 983040, 15, 0, 983041, 15, 0, 983042, 13, 0, 983048, 7, 0, 983049, 15, 0, 983050, 15, 0, 983051, 12, 0, 983060, 6, 0, 983061, 15, 0, 983062, 13, 0, 983072, 7, 0, 983073, 15, 0, 983074, 12, 0, 983076, 6, 0, 983077, 15, 0, 983078, 15, 0, 983079, 15, 0, 1048576, 15, 0, 1048577, 15, 0, 1048578, 9, 0, 1048583, 6, 0, 1048584, 15, 0, 1048585, 15, 0, 1048586, 15, 0, 1048587, 13, 0, 1048596, 7, 0, 1048597, 15, 0, 1048598, 13, 0, 1048608, 7, 0, 1048609, 15, 0, 1048610, 15, 0, 1048611, 14, 0, 1048612, 11, 0, 1048613, 11, 0, 1048614, 15, 0, 1048615, 15, 0, 1114112, 15, 0, 1114113, 9, 0, 1114118, 6, 0, 1114119, 15, 0, 1114120, 15, 0, 1114121, 15, 0, 1114122, 15, 0, 1114123, 9, 0, 1114131, 6, 0, 1114132, 15, 0, 1114133, 15, 0, 1114134, 13, 0, 1114144, 7, 0, 1114145, 15, 0, 1114146, 11, 0, 1114147, 9, 0, 1114150, 7, 0, 1114151, 15, 0, 1179648, 13, 0, 1179654, 3, 0, 1179655, 15, 0, 1179656, 15, 0, 1179657, 15, 0, 1179658, 13, 0, 1179664, 4, 0, 1179667, 3, 0, 1179668, 15, 0, 1179669, 15, 0, 1179670, 15, 0, 1179671, 14, 0, 1179672, 12, 0, 1179679, 2, 0, 1179680, 11, 0, 1179681, 9, 0, 1179686, 7, 0, 1179687, 15, 0, 1245184, 13, 0, 1245191, 7, 0, 1245192, 15, 0, 1245193, 11, 0, 1245194, 11, 0, 1245195, 14, 0, 1245196, 14, 0, 1245197, 14, 0, 1245198, 14, 0, 1245199, 14, 0, 1245200, 15, 0, 1245201, 12, 0, 1245204, 7, 0, 1245205, 15, 0, 1245206, 15, 0, 1245207, 15, 0, 1245208, 15, 0, 1245209, 12, 0, 1245222, 7, 0, 1245223, 15, 0, 1310720, 15, 0, 1310721, 12, 0, 1310727, 7, 0, 1310728, 13, 0, 1310731, 3, 0, 1310732, 11, 0, 1310733, 11, 0, 1310734, 11, 0, 1310735, 11, 0, 1310736, 11, 0, 1310737, 11, 0, 1310738, 8, 0, 1310740, 3, 0, 1310741, 11, 0, 1310742, 11, 0, 1310743, 15, 0, 1310744, 15, 0, 1310745, 15, 0, 1310746, 14, 0, 1310747, 14, 0, 1310748, 14, 0, 1310749, 14, 0, 1310750, 14, 0, 1310751, 14, 0, 1310752, 14, 0, 1310753, 14, 0, 1310754, 14, 0, 1310755, 14, 0, 1310756, 14, 0, 1310757, 14, 0, 1310758, 15, 0, 1310759, 15, 0, 1376256, 15, 0, 1376257, 15, 0, 1376258, 12, 0, 1376263, 7, 0, 1376264, 13, 0, 1376279, 7, 0, 1376280, 15, 0, 1376281, 15, 0, 1376282, 15, 0, 1376283, 15, 0, 1376284, 15, 0, 1376285, 15, 0, 1376286, 15, 0, 1376287, 15, 0, 1376288, 15, 0, 1376289, 15, 0, 1376290, 15, 0, 1376291, 15, 0, 1376292, 15, 0, 1376293, 15, 0, 1376294, 15, 0, 1376295, 15, 0, 1441792, 15, 0, 1441793, 15, 0, 1441794, 15, 0, 1441795, 14, 0, 1441796, 14, 0, 1441797, 14, 0, 1441798, 14, 0, 1441799, 15, 0, 1441800, 15, 0, 1441801, 14, 0, 1441802, 14, 0, 1441803, 14, 0, 1441804, 14, 0, 1441805, 14, 0, 1441806, 14, 0, 1441807, 14, 0, 1441808, 14, 0, 1441809, 14, 0, 1441810, 14, 0, 1441811, 14, 0, 1441812, 14, 0, 1441813, 14, 0, 1441814, 14, 0, 1441815, 15, 0, 1441816, 15, 0, 1441817, 15, 0, 1441818, 15, 0, 1441819, 15, 0, 1441820, 15, 0, 1441821, 15, 0, 1441822, 15, 0, 1441823, 15, 0, 1441824, 15, 0, 1441825, 15, 0, 1441826, 15, 0, 1441827, 15, 0, 1441828, 15, 0, 1441829, 15, 0, 1441830, 15, 0, 1441831, 15, 0 )
+tile_data = PoolIntArray( 0, 15, 0, 1, 15, 0, 2, 15, 0, 3, 15, 0, 4, 15, 0, 5, 15, 0, 6, 15, 0, 7, 15, 0, 8, 15, 0, 9, 15, 0, 10, 15, 0, 11, 15, 0, 12, 15, 0, 13, 15, 0, 14, 15, 0, 15, 15, 0, 16, 15, 0, 17, 15, 0, 18, 15, 0, 19, 15, 0, 20, 15, 0, 21, 15, 0, 22, 15, 0, 23, 15, 0, 24, 15, 0, 25, 15, 0, 26, 15, 0, 27, 15, 0, 28, 15, 0, 29, 15, 0, 30, 15, 0, 31, 15, 0, 32, 15, 0, 33, 15, 0, 34, 15, 0, 35, 15, 0, 36, 15, 0, 37, 15, 0, 38, 15, 0, 39, 15, 0, 65536, 15, 0, 65537, 15, 0, 65538, 15, 0, 65539, 15, 0, 65540, 11, 0, 65541, 11, 0, 65542, 11, 0, 65543, 11, 0, 65544, 15, 0, 65545, 15, 0, 65546, 15, 0, 65547, 15, 0, 65548, 15, 0, 65549, 15, 0, 65550, 15, 0, 65551, 15, 0, 65552, 15, 0, 65553, 15, 0, 65554, 15, 0, 65555, 15, 0, 65556, 15, 0, 65557, 15, 0, 65558, 15, 0, 65559, 15, 0, 65560, 15, 0, 65561, 15, 0, 65562, 15, 0, 65563, 15, 0, 65564, 15, 0, 65565, 15, 0, 65566, 15, 0, 65567, 15, 0, 65568, 15, 0, 65569, 15, 0, 65570, 15, 0, 65571, 15, 0, 65572, 15, 0, 65573, 15, 0, 65574, 15, 0, 65575, 15, 0, 131072, 15, 0, 131073, 15, 0, 131074, 15, 0, 131075, 9, 0, 131080, 3, 0, 131081, 11, 0, 131082, 15, 0, 131083, 15, 0, 131084, 15, 0, 131085, 15, 0, 131086, 15, 0, 131087, 15, 0, 131088, 15, 0, 131089, 15, 0, 131090, 15, 0, 131091, 15, 0, 131092, 15, 0, 131093, 15, 0, 131094, 15, 0, 131095, 15, 0, 131096, 15, 0, 131097, 15, 0, 131098, 11, 0, 131099, 15, 0, 131100, 15, 0, 131101, 15, 0, 131102, 15, 0, 131103, 15, 0, 131104, 15, 0, 131105, 15, 0, 131106, 15, 0, 131107, 15, 0, 131108, 15, 0, 131109, 11, 0, 131110, 15, 0, 131111, 15, 0, 196608, 15, 0, 196609, 11, 0, 196610, 9, 0, 196618, 3, 0, 196619, 15, 0, 196620, 15, 0, 196621, 15, 0, 196622, 15, 0, 196623, 15, 0, 196624, 15, 0, 196625, 15, 0, 196626, 15, 0, 196627, 15, 0, 196628, 15, 0, 196629, 15, 0, 196630, 15, 0, 196631, 15, 0, 196632, 15, 0, 196633, 9, 0, 196635, 3, 0, 196636, 11, 0, 196637, 11, 0, 196638, 15, 0, 196639, 15, 0, 196640, 15, 0, 196641, 15, 0, 196642, 15, 0, 196643, 11, 0, 196644, 9, 0, 196646, 3, 0, 196647, 15, 0, 262144, 13, 0, 262155, 7, 0, 262156, 15, 0, 262157, 15, 0, 262158, 15, 0, 262159, 15, 0, 262160, 15, 0, 262161, 15, 0, 262162, 15, 0, 262163, 15, 0, 262164, 15, 0, 262165, 15, 0, 262166, 15, 0, 262167, 15, 0, 262168, 13, 0, 262174, 7, 0, 262175, 15, 0, 262176, 15, 0, 262177, 15, 0, 262178, 13, 0, 262183, 7, 0, 327680, 13, 0, 327691, 3, 0, 327692, 15, 0, 327693, 15, 0, 327694, 15, 0, 327695, 15, 0, 327696, 15, 0, 327697, 15, 0, 327698, 15, 0, 327699, 15, 0, 327700, 15, 0, 327701, 15, 0, 327702, 15, 0, 327703, 15, 0, 327704, 9, 0, 327710, 3, 0, 327711, 15, 0, 327712, 15, 0, 327713, 15, 0, 327714, 9, 0, 327719, 7, 0, 393216, 13, 0, 393218, 6, 0, 393219, 12, 0, 393228, 3, 0, 393229, 15, 0, 393230, 15, 0, 393231, 15, 0, 393232, 11, 0, 393233, 11, 0, 393234, 11, 0, 393235, 11, 0, 393236, 11, 0, 393237, 15, 0, 393238, 15, 0, 393239, 9, 0, 393247, 3, 0, 393248, 15, 0, 393249, 13, 0, 393255, 7, 0, 458752, 15, 0, 458753, 14, 0, 458754, 15, 0, 458755, 15, 0, 458756, 12, 0, 458765, 3, 0, 458766, 11, 0, 458767, 9, 0, 458773, 3, 0, 458774, 9, 0, 458784, 7, 0, 458785, 13, 0, 458791, 7, 0, 524288, 15, 0, 524289, 15, 0, 524290, 15, 0, 524291, 15, 0, 524292, 13, 0, 524320, 7, 0, 524321, 15, 0, 524322, 14, 0, 524323, 14, 0, 524324, 12, 0, 524327, 7, 0, 589824, 15, 0, 589825, 15, 0, 589826, 15, 0, 589827, 15, 0, 589828, 13, 0, 589856, 7, 0, 589857, 15, 0, 589858, 15, 0, 589859, 15, 0, 589860, 9, 0, 589863, 7, 0, 655360, 15, 0, 655361, 15, 0, 655362, 15, 0, 655363, 15, 0, 655364, 9, 0, 655392, 7, 0, 655393, 15, 0, 655394, 15, 0, 655395, 13, 0, 655399, 7, 0, 720896, 15, 0, 720897, 15, 0, 720898, 15, 0, 720899, 9, 0, 720911, 6, 0, 720912, 14, 0, 720913, 14, 0, 720914, 14, 0, 720915, 14, 0, 720916, 14, 0, 720917, 12, 0, 720928, 7, 0, 720929, 15, 0, 720930, 15, 0, 720931, 9, 0, 720935, 7, 0, 786432, 15, 0, 786433, 15, 0, 786434, 13, 0, 786445, 6, 0, 786446, 14, 0, 786447, 15, 0, 786448, 15, 0, 786449, 15, 0, 786450, 15, 0, 786451, 15, 0, 786452, 15, 0, 786453, 15, 0, 786454, 14, 0, 786455, 14, 0, 786456, 12, 0, 786464, 7, 0, 786465, 15, 0, 786466, 13, 0, 786471, 7, 0, 851968, 15, 0, 851969, 15, 0, 851970, 9, 0, 851979, 6, 0, 851980, 14, 0, 851981, 15, 0, 851982, 15, 0, 851983, 15, 0, 851984, 15, 0, 851985, 11, 0, 851986, 11, 0, 851987, 15, 0, 851988, 15, 0, 851989, 15, 0, 851990, 15, 0, 851991, 15, 0, 851992, 15, 0, 851993, 14, 0, 851994, 8, 0, 851997, 2, 0, 851998, 10, 0, 851999, 14, 0, 852000, 15, 0, 852001, 15, 0, 852002, 9, 0, 852007, 7, 0, 917504, 15, 0, 917505, 13, 0, 917514, 6, 0, 917515, 15, 0, 917516, 15, 0, 917517, 15, 0, 917518, 15, 0, 917519, 15, 0, 917520, 9, 0, 917523, 7, 0, 917524, 15, 0, 917525, 15, 0, 917526, 15, 0, 917527, 15, 0, 917528, 11, 0, 917529, 9, 0, 917535, 3, 0, 917536, 15, 0, 917537, 13, 0, 917543, 7, 0, 983040, 15, 0, 983041, 15, 0, 983042, 10, 0, 983043, 8, 0, 983050, 7, 0, 983051, 15, 0, 983052, 15, 0, 983053, 15, 0, 983054, 15, 0, 983055, 9, 0, 983059, 7, 0, 983060, 15, 0, 983061, 15, 0, 983062, 15, 0, 983063, 13, 0, 983072, 7, 0, 983073, 13, 0, 983079, 7, 0, 1048576, 15, 0, 1048577, 9, 0, 1048586, 7, 0, 1048587, 15, 0, 1048588, 15, 0, 1048589, 15, 0, 1048590, 13, 0, 1048595, 7, 0, 1048596, 15, 0, 1048597, 15, 0, 1048598, 15, 0, 1048599, 13, 0, 1048608, 7, 0, 1048609, 15, 0, 1048610, 8, 0, 1048615, 7, 0, 1114112, 13, 0, 1114122, 3, 0, 1114123, 15, 0, 1114124, 15, 0, 1114125, 15, 0, 1114126, 9, 0, 1114131, 3, 0, 1114132, 11, 0, 1114133, 11, 0, 1114134, 11, 0, 1114135, 9, 0, 1114143, 6, 0, 1114144, 15, 0, 1114145, 9, 0, 1114151, 7, 0, 1179648, 13, 0, 1179659, 7, 0, 1179660, 15, 0, 1179661, 13, 0, 1179679, 3, 0, 1179680, 9, 0, 1179687, 7, 0, 1245184, 13, 0, 1245195, 7, 0, 1245196, 15, 0, 1245197, 13, 0, 1245200, 6, 0, 1245201, 12, 0, 1245205, 6, 0, 1245206, 12, 0, 1245223, 7, 0, 1310720, 15, 0, 1310721, 12, 0, 1310730, 6, 0, 1310731, 15, 0, 1310732, 15, 0, 1310733, 15, 0, 1310734, 14, 0, 1310735, 14, 0, 1310736, 15, 0, 1310737, 15, 0, 1310738, 14, 0, 1310739, 14, 0, 1310740, 14, 0, 1310741, 15, 0, 1310742, 13, 0, 1310756, 6, 0, 1310757, 14, 0, 1310758, 14, 0, 1310759, 15, 0, 1376256, 15, 0, 1376257, 15, 0, 1376258, 12, 0, 1376265, 6, 0, 1376266, 15, 0, 1376267, 15, 0, 1376268, 15, 0, 1376269, 15, 0, 1376270, 15, 0, 1376271, 15, 0, 1376272, 15, 0, 1376273, 15, 0, 1376274, 15, 0, 1376275, 15, 0, 1376276, 15, 0, 1376277, 15, 0, 1376278, 15, 0, 1376279, 14, 0, 1376280, 12, 0, 1376284, 6, 0, 1376285, 14, 0, 1376286, 12, 0, 1376289, 4, 0, 1376291, 6, 0, 1376292, 15, 0, 1376293, 15, 0, 1376294, 15, 0, 1376295, 15, 0, 1441792, 15, 0, 1441793, 15, 0, 1441794, 15, 0, 1441795, 14, 0, 1441796, 14, 0, 1441797, 14, 0, 1441798, 14, 0, 1441799, 14, 0, 1441800, 14, 0, 1441801, 15, 0, 1441802, 15, 0, 1441803, 15, 0, 1441804, 15, 0, 1441805, 15, 0, 1441806, 15, 0, 1441807, 15, 0, 1441808, 15, 0, 1441809, 15, 0, 1441810, 15, 0, 1441811, 15, 0, 1441812, 15, 0, 1441813, 15, 0, 1441814, 15, 0, 1441815, 15, 0, 1441816, 15, 0, 1441817, 14, 0, 1441818, 14, 0, 1441819, 14, 0, 1441820, 15, 0, 1441821, 15, 0, 1441822, 15, 0, 1441823, 14, 0, 1441824, 14, 0, 1441825, 15, 0, 1441826, 14, 0, 1441827, 15, 0, 1441828, 15, 0, 1441829, 15, 0, 1441830, 15, 0, 1441831, 15, 0 )
 _sections_unfolded = [ "Z Index" ]
 
 [node name="interactables" type="Node2D" parent="level" index="2"]
 
 editor/display_folded = true
 
-[node name="fuel_cell_small" parent="level/interactables" index="0" instance=ExtResource( 5 )]
+[node name="fuel_cell_small" type="RigidBody2D" parent="level/interactables" index="0" groups=[
+"fuel",
+"explosive",
+] instance=ExtResource( 5 )]
 
-position = Vector2( 296, 126.5 )
+light_mask = 4
+position = Vector2( 40, 94.5 )
+input_pickable = false
+collision_layer = 4
+collision_mask = 5
+mode = 0
+mass = 0.7
+friction = 1.0
+bounce = 0.2
+gravity_scale = 1.0
+custom_integrator = false
+continuous_cd = 0
+contacts_reported = 4
+contact_monitor = true
+sleeping = false
+can_sleep = true
+linear_velocity = Vector2( 0, 0 )
+linear_damp = -1.0
+angular_velocity = 0.0
+angular_damp = -1.0
+script = ExtResource( 6 )
+_sections_unfolded = [ "Collision", "Transform", "Visibility" ]
+collect = true
+grapple = true
+fuel_amount = 25
 
-[node name="blackbox" parent="level/interactables" index="1" instance=ExtResource( 6 )]
+[node name="blackbox" type="Node2D" parent="level/interactables" index="1" instance=ExtResource( 7 )]
 
-position = Vector2( 56, 143 )
+position = Vector2( 24, 111 )
+script = ExtResource( 8 )
+collect = true
 
-[node name="fuel_cell_small2" parent="level/interactables" index="2" instance=ExtResource( 5 )]
+[node name="health_crate" type="Node2D" parent="level/interactables" index="2" instance=ExtResource( 9 )]
 
-position = Vector2( 536, 174.5 )
+light_mask = 4
+position = Vector2( 552, 126 )
+script = ExtResource( 10 )
+_sections_unfolded = [ "Material", "Transform", "Visibility" ]
+collect = true
+health_amount = 25
 
-[node name="health_crate" parent="level/interactables" index="3" instance=ExtResource( 7 )]
+[node name="blackbox2" type="Node2D" parent="level/interactables" index="3" instance=ExtResource( 7 )]
 
-position = Vector2( 600, 174 )
+position = Vector2( 568, 127 )
+script = ExtResource( 8 )
+collect = true
 
-[node name="health_crate2" parent="level/interactables" index="4" instance=ExtResource( 7 )]
+[node name="health_crate2" type="Node2D" parent="level/interactables" index="4" instance=ExtResource( 9 )]
 
-position = Vector2( 328, 238 )
+light_mask = 4
+position = Vector2( 376, 190 )
+script = ExtResource( 10 )
+_sections_unfolded = [ "Material", "Transform", "Visibility" ]
+collect = true
+health_amount = 25
 
-[node name="blackbox2" parent="level/interactables" index="5" instance=ExtResource( 6 )]
+[node name="fuel_cell_small2" type="RigidBody2D" parent="level/interactables" index="5" groups=[
+"fuel",
+"explosive",
+] instance=ExtResource( 5 )]
 
-position = Vector2( 568, 255 )
+light_mask = 4
+position = Vector2( 424, 206.5 )
+input_pickable = false
+collision_layer = 4
+collision_mask = 5
+mode = 0
+mass = 0.7
+friction = 1.0
+bounce = 0.2
+gravity_scale = 1.0
+custom_integrator = false
+continuous_cd = 0
+contacts_reported = 4
+contact_monitor = true
+sleeping = false
+can_sleep = true
+linear_velocity = Vector2( 0, 0 )
+linear_damp = -1.0
+angular_velocity = 0.0
+angular_damp = -1.0
+script = ExtResource( 6 )
+_sections_unfolded = [ "Collision", "Transform", "Visibility" ]
+collect = true
+grapple = true
+fuel_amount = 25
 
-[node name="fuel_cell_small3" parent="level/interactables" index="6" instance=ExtResource( 5 )]
+[node name="health_crate3" type="Node2D" parent="level/interactables" index="6" instance=ExtResource( 9 )]
 
-position = Vector2( 248, 302.5 )
+light_mask = 4
+position = Vector2( 56, 238 )
+script = ExtResource( 10 )
+_sections_unfolded = [ "Material", "Transform", "Visibility" ]
+collect = true
+health_amount = 25
+
+[node name="fuel_cell_small3" type="RigidBody2D" parent="level/interactables" index="7" groups=[
+"fuel",
+"explosive",
+] instance=ExtResource( 5 )]
+
+light_mask = 4
+position = Vector2( 552, 254.5 )
+input_pickable = false
+collision_layer = 4
+collision_mask = 5
+mode = 0
+mass = 0.7
+friction = 1.0
+bounce = 0.2
+gravity_scale = 1.0
+custom_integrator = false
+continuous_cd = 0
+contacts_reported = 4
+contact_monitor = true
+sleeping = false
+can_sleep = true
+linear_velocity = Vector2( 0, 0 )
+linear_damp = -1.0
+angular_velocity = 0.0
+angular_damp = -1.0
+script = ExtResource( 6 )
+_sections_unfolded = [ "Collision", "Transform", "Visibility" ]
+collect = true
+grapple = true
+fuel_amount = 25
+
+[node name="fuel_cell_small4" type="RigidBody2D" parent="level/interactables" index="8" groups=[
+"fuel",
+"explosive",
+] instance=ExtResource( 5 )]
+
+light_mask = 4
+position = Vector2( 392, 334.5 )
+input_pickable = false
+collision_layer = 4
+collision_mask = 5
+mode = 0
+mass = 0.7
+friction = 1.0
+bounce = 0.2
+gravity_scale = 1.0
+custom_integrator = false
+continuous_cd = 0
+contacts_reported = 4
+contact_monitor = true
+sleeping = false
+can_sleep = true
+linear_velocity = Vector2( 0, 0 )
+linear_damp = -1.0
+angular_velocity = 0.0
+angular_damp = -1.0
+script = ExtResource( 6 )
+_sections_unfolded = [ "Collision", "Transform", "Visibility" ]
+collect = true
+grapple = true
+fuel_amount = 25
 
 [node name="antagonists" type="Node2D" parent="level" index="3"]
 
 editor/display_folded = true
 
-[node name="shooter" parent="level/antagonists" index="0" instance=ExtResource( 8 )]
+[node name="cannon" type="RigidBody2D" parent="level/antagonists" index="0" groups=[
+"weapon",
+] instance=ExtResource( 11 )]
 
-position = Vector2( 504, 82 )
+position = Vector2( 200, 203 )
+z_index = 40
+input_pickable = false
+collision_layer = 0
+collision_mask = 23
+mode = 3
+mass = 1.0
+friction = 1.0
+bounce = 0.0
+gravity_scale = 1.0
+custom_integrator = false
+continuous_cd = 0
+contacts_reported = 0
+contact_monitor = false
+sleeping = false
+can_sleep = true
+linear_velocity = Vector2( 0, 0 )
+linear_damp = -1.0
+angular_velocity = 0.0
+angular_damp = -1.0
+script = ExtResource( 12 )
+_sections_unfolded = [ "Collision", "Visibility", "Z Index" ]
+sight_range = 200
+ammo = ExtResource( 13 )
+
+[node name="cannon2" type="RigidBody2D" parent="level/antagonists" index="1" groups=[
+"weapon",
+] instance=ExtResource( 11 )]
+
+position = Vector2( 280, 229 )
 rotation = 3.14159
+z_index = 40
+input_pickable = false
+collision_layer = 0
+collision_mask = 23
+mode = 3
+mass = 1.0
+friction = 1.0
+bounce = 0.0
+gravity_scale = 1.0
+custom_integrator = false
+continuous_cd = 0
+contacts_reported = 0
+contact_monitor = false
+sleeping = false
+can_sleep = true
+linear_velocity = Vector2( 0, 0 )
+linear_damp = -1.0
+angular_velocity = 0.0
+angular_damp = -1.0
+script = ExtResource( 12 )
+_sections_unfolded = [ "Collision", "Visibility", "Z Index" ]
+sight_range = 200
+ammo = ExtResource( 13 )
 
-[node name="cannon" parent="level/antagonists" index="1" instance=ExtResource( 9 )]
+[node name="shooter" type="StaticBody2D" parent="level/antagonists" index="2" groups=[
+"weapon",
+] instance=ExtResource( 14 )]
 
-position = Vector2( 213, 184 )
-rotation = 1.5708
-
-[node name="shooter2" parent="level/antagonists" index="2" instance=ExtResource( 8 )]
-
-position = Vector2( 88, 194 )
+position = Vector2( 408, 242 )
 rotation = 3.14159
+input_pickable = false
+collision_layer = 8
+collision_mask = 3
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+script = ExtResource( 15 )
+_sections_unfolded = [ "Collision", "Transform", "Visibility" ]
+sight_range = 200
+ammo = ExtResource( 16 )
 
 [node name="destructables" type="Node2D" parent="level" index="4"]
 
 editor/display_folded = true
 
-[node name="block_destructable" parent="level/destructables" index="0" instance=ExtResource( 10 )]
+[node name="block_destructable" type="RigidBody2D" parent="level/destructables" index="0" groups=[
+"environment",
+"destructable",
+] instance=ExtResource( 17 )]
 
-position = Vector2( 552, 184 )
+position = Vector2( 440, 216 )
+z_index = 50
+input_pickable = false
+collision_layer = 17
+collision_mask = 17
+mode = 3
+mass = 10.0
+friction = 1.0
+bounce = 0.0
+gravity_scale = 1.0
+custom_integrator = false
+continuous_cd = 0
+contacts_reported = 0
+contact_monitor = false
+sleeping = false
+can_sleep = true
+linear_velocity = Vector2( 0, 0 )
+linear_damp = -1.0
+angular_velocity = 0.0
+angular_damp = -1.0
+script = ExtResource( 18 )
+_sections_unfolded = [ "Collision", "Linear", "Z Index" ]
 
-[node name="block_destructable2" parent="level/destructables" index="1" instance=ExtResource( 10 )]
+[node name="block_destructable2" type="RigidBody2D" parent="level/destructables" index="1" groups=[
+"environment",
+"destructable",
+] instance=ExtResource( 17 )]
 
-position = Vector2( 568, 184 )
+position = Vector2( 456, 216 )
+z_index = 50
+input_pickable = false
+collision_layer = 17
+collision_mask = 17
+mode = 3
+mass = 10.0
+friction = 1.0
+bounce = 0.0
+gravity_scale = 1.0
+custom_integrator = false
+continuous_cd = 0
+contacts_reported = 0
+contact_monitor = false
+sleeping = false
+can_sleep = true
+linear_velocity = Vector2( 0, 0 )
+linear_damp = -1.0
+angular_velocity = 0.0
+angular_damp = -1.0
+script = ExtResource( 18 )
+_sections_unfolded = [ "Collision", "Linear", "Z Index" ]
 
 [node name="actors" type="Node2D" parent="level" index="5"]
 
 editor/display_folded = true
 
-[node name="ship_one" parent="level/actors" index="0" instance=ExtResource( 11 )]
+[node name="ship_one" type="RigidBody2D" parent="level/actors" index="0" groups=[
+"player",
+] instance=ExtResource( 19 )]
 
-position = Vector2( 520, 172 )
+light_mask = 2
+position = Vector2( 88, 348 )
+input_pickable = false
+collision_layer = 2
+collision_mask = 9
+mode = 0
+mass = 10.0
+friction = 1.0
+bounce = 0.0
+gravity_scale = 1.0
+custom_integrator = false
+continuous_cd = 0
+contacts_reported = 0
+contact_monitor = false
+sleeping = false
+can_sleep = true
+linear_velocity = Vector2( 0, 0 )
+linear_damp = -1.0
+angular_velocity = 0.0
+angular_damp = 1.0
+script = ExtResource( 20 )
+_sections_unfolded = [ "Angular", "Collision", "Visibility" ]
+scn_destroyed_ship = ExtResource( 21 )
+thrust = 24
+turn_speed = 0.9
+start_fuel = 100.0
+max_fuel = 100
+fuel_use = 1.0
+start_health = 100.0
+max_health = 100
+rope_colour = Color( 0.328125, 0.304122, 0.1474, 1 )
 
 [node name="drawing" type="Node2D" parent="." index="1"]
 
 light_mask = 8
 z_index = 45
 z_as_relative = false
-script = ExtResource( 12 )
+script = ExtResource( 22 )
 _sections_unfolded = [ "Visibility", "Z Index" ]
 rope_colour = Color( 0.292969, 0.22805, 0.136185, 1 )
 
@@ -232,7 +520,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = ExtResource( 13 )
+custom_fonts/font = ExtResource( 23 )
 text = "ya ded!"
 align = 1
 percent_visible = 1.0
@@ -257,7 +545,7 @@ playback_speed = 1.0
 anims/fade_in = SubResource( 1 )
 blend_times = [  ]
 
-[node name="ui" parent="." index="3" instance=ExtResource( 14 )]
+[node name="ui" parent="." index="3" instance=ExtResource( 24 )]
 
 [node name="sounds" type="Node" parent="." index="4"]
 
@@ -265,7 +553,7 @@ editor/display_folded = true
 
 [node name="background_music" type="AudioStreamPlayer" parent="sounds" index="0"]
 
-stream = ExtResource( 15 )
+stream = ExtResource( 25 )
 volume_db = -6.0
 pitch_scale = 1.0
 autoplay = true
@@ -274,7 +562,7 @@ bus = "Master"
 
 [node name="explosion" type="AudioStreamPlayer" parent="sounds" index="1"]
 
-stream = ExtResource( 16 )
+stream = ExtResource( 26 )
 volume_db = 0.0
 pitch_scale = 1.0
 autoplay = false

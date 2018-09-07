@@ -9,7 +9,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 8, 8 )
+extents = Vector2( 2, 4 )
 
 [sub_resource type="CircleShape2D" id=2]
 
@@ -50,7 +50,7 @@ texture = ExtResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
 
-visible = false
+position = Vector2( 0, 4 )
 shape = SubResource( 1 )
 
 [node name="range" type="Area2D" parent="." index="2"]
