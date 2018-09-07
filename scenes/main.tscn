@@ -45,7 +45,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[node name="main" type="Node2D" index="0"]
+[node name="main" type="Node2D"]
 
 script = ExtResource( 1 )
 _sections_unfolded = [ "Pause", "Visibility" ]
@@ -55,7 +55,6 @@ __meta__ = {
 
 [node name="level" type="Node2D" parent="." index="0"]
 
-editor/display_folded = true
 z_as_relative = false
 script = ExtResource( 2 )
 _sections_unfolded = [ "Transform", "Visibility", "Z Index" ]
@@ -284,36 +283,7 @@ editor/display_folded = true
 "weapon",
 ] instance=ExtResource( 11 )]
 
-position = Vector2( 200, 203 )
-z_index = 40
-input_pickable = false
-collision_layer = 0
-collision_mask = 23
-mode = 3
-mass = 1.0
-friction = 1.0
-bounce = 0.0
-gravity_scale = 1.0
-custom_integrator = false
-continuous_cd = 0
-contacts_reported = 0
-contact_monitor = false
-sleeping = false
-can_sleep = true
-linear_velocity = Vector2( 0, 0 )
-linear_damp = -1.0
-angular_velocity = 0.0
-angular_damp = -1.0
-script = ExtResource( 12 )
-_sections_unfolded = [ "Collision", "Visibility", "Z Index" ]
-sight_range = 200
-ammo = ExtResource( 13 )
-
-[node name="cannon2" type="RigidBody2D" parent="level/antagonists" index="1" groups=[
-"weapon",
-] instance=ExtResource( 11 )]
-
-position = Vector2( 280, 229 )
+position = Vector2( 328, 117 )
 rotation = 3.14159
 z_index = 40
 input_pickable = false
@@ -339,7 +309,7 @@ _sections_unfolded = [ "Collision", "Visibility", "Z Index" ]
 sight_range = 200
 ammo = ExtResource( 13 )
 
-[node name="shooter" type="StaticBody2D" parent="level/antagonists" index="2" groups=[
+[node name="shooter" type="StaticBody2D" parent="level/antagonists" index="1" groups=[
 "weapon",
 ] instance=ExtResource( 14 )]
 
@@ -568,6 +538,8 @@ pitch_scale = 1.0
 autoplay = false
 mix_target = 0
 bus = "Master"
+
+[connection signal="tree_entered" from="level" to="level" method="_on_level_tree_entered"]
 
 [connection signal="timeout" from="top_overlay/death_screen/timer" to="." method="_on_timer_timeout"]
 

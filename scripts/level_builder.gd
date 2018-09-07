@@ -4,6 +4,7 @@ extends Node2D
 export (Texture) var map_image
 export (Color) var wall_colour
 export (bool) var generate = false
+#var new_generation = true
 
 const walls = { Vector2(0, -1): 1, Vector2(1, 0): 2, Vector2(0, 1): 4, Vector2(-1, 0): 8 }
 
@@ -15,7 +16,8 @@ var spawned = []
 
 
 func _ready():
-		pass
+	if not Engine.is_editor_hint():
+		generate = true
 		
 		
 func _process(delta):
@@ -27,6 +29,7 @@ func _process(delta):
 		remove_children([$interactables, $antagonists, $destructables, $actors])
 		spawned = []
 		parse_image()
+		get_parent().sync_signals()
 		
 		
 func remove_children(nodes):
@@ -130,3 +133,6 @@ func check_clamp(item, x, y):
 		if $environment.get_cell(x - 1, y) > -1: return deg2rad(90)
 		
 	return 0
+
+func _on_level_tree_entered():
+	pass

@@ -4,7 +4,9 @@ var scn_explosion = load("res://entities/explosion.tscn")
 
 var death_message = ""
 
-func _ready():
+
+func sync_signals():
+	
 	add_signals_from_group("sound", self, "play_sound")
 	add_signals_from_group("sound", self, "stop_sound")
 	
@@ -15,11 +17,11 @@ func _ready():
 	add_signals_from_group("player", $ui/guages, "health_change")
 	add_signals_from_group("player", self, "spawn_explosion")
 	add_signals_from_group("player", self, "death")
-		
+	
 	for p in get_tree().get_nodes_in_group("player"): 
 		p.call_deferred("change_fuel", p.start_fuel)
 		p.call_deferred("change_health", p.start_health)
-	
+		
 		
 func add_signals_from_group(group_name, target, method):
 	for item in get_tree().get_nodes_in_group(group_name):

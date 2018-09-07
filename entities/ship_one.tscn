@@ -79,7 +79,7 @@ anim_offset_random = 0.0
 anim_loop = false
 _sections_unfolded = [ "Color" ]
 
-[node name="ship_one" type="RigidBody2D" groups=[
+[node name="ship_one" type="RigidBody2D" index="0" groups=[
 "player",
 ]]
 
@@ -109,7 +109,7 @@ thrust = 24
 turn_speed = 0.9
 start_fuel = 100.0
 max_fuel = 100
-fuel_use = 1.0
+fuel_use = 0.7
 start_health = 100.0
 max_health = 100
 rope_colour = Color( 0.328125, 0.304122, 0.1474, 1 )
