@@ -2,6 +2,7 @@ extends Area2D
 
 export (int) var speed
 export (int) var steer_force
+export (int) var exp_force
 
 var target = null
 var velocity = Vector2()
@@ -35,7 +36,7 @@ func seek():
 	
 
 func explode():
-	emit_signal("spawn_explosion", position, 20, 0.5)
+	emit_signal("spawn_explosion", position, exp_force, 0.5)
 	queue_free()
 	
 

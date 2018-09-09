@@ -25,13 +25,33 @@ tracks/0/keys = {
 [sub_resource type="CircleShape2D" id=2]
 
 custom_solver_bias = 0.0
-radius = 20.0
+radius = 10.0
 
-[node name="explosion" type="Node2D" groups=[
+[node name="explosion" type="RigidBody2D" index="0" groups=[
+"explosion",
 "sound",
 ]]
 
+input_pickable = false
+collision_layer = 8
+collision_mask = 87
+mode = 3
+mass = 1.0
+friction = 1.0
+bounce = 0.0
+gravity_scale = 1.0
+custom_integrator = false
+continuous_cd = 0
+contacts_reported = 50
+contact_monitor = true
+sleeping = false
+can_sleep = true
+linear_velocity = Vector2( 0, 0 )
+linear_damp = -1.0
+angular_velocity = 0.0
+angular_damp = -1.0
 script = ExtResource( 1 )
+_sections_unfolded = [ "Collision" ]
 
 [node name="Sprite" type="Sprite" parent="." index="0"]
 
@@ -52,25 +72,10 @@ playback_speed = 1.0
 anims/explode = SubResource( 1 )
 blend_times = [  ]
 
-[node name="aoe" type="Area2D" parent="." index="2"]
-
-input_pickable = true
-gravity_vec = Vector2( 0, 1 )
-gravity = 98.0
-linear_damp = 0.1
-angular_damp = 1.0
-collision_layer = 0
-collision_mask = 86
-audio_bus_override = false
-audio_bus_name = "Master"
-_sections_unfolded = [ "Collision" ]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="aoe" index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="2"]
 
 shape = SubResource( 2 )
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
-
-[connection signal="body_entered" from="aoe" to="." method="_on_aoe_body_entered"]
 
 

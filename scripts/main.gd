@@ -1,7 +1,6 @@
 extends Node2D
 
 var scn_explosion = load("res://entities/explosion.tscn")
-
 var death_message = ""
 
 
@@ -31,7 +30,7 @@ func add_signals_from_group(group_name, target, method):
 func spawn_explosion(pos, power = 20, scl = 1.0):
 	var explosion = scn_explosion.instance()
 	explosion.position = pos
-	explosion.get_node("aoe/CollisionShape2D").shape.radius = power
+	explosion.get_node("CollisionShape2D").shape.radius = power
 	explosion.get_node("Sprite").scale = Vector2(scl, scl)
 	$sounds/explosion.play()
 	add_child(explosion)
@@ -49,6 +48,6 @@ func death(message, delay = 2.5):
 	$top_overlay/death_screen/timer.wait_time = delay
 	$top_overlay/death_screen/timer.start()
 		
-
+		
 func _on_timer_timeout():
 	$top_overlay/anim.play("fade_in")

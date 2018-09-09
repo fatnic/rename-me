@@ -7,7 +7,7 @@
 [ext_resource path="res://entities/nodes/line_of_sight.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/images/lighting.png" type="Texture" id=6]
 
-[sub_resource type="CapsuleShape2D" id=3]
+[sub_resource type="CapsuleShape2D" id=1]
 
 custom_solver_bias = 0.0
 radius = 3.0
@@ -46,7 +46,7 @@ _sections_unfolded = [ "Offset", "Transform", "Visibility", "Z Index" ]
 
 visible = false
 position = Vector2( 0, 3 )
-shape = SubResource( 3 )
+shape = SubResource( 1 )
 
 [node name="turret" type="Position2D" parent="." index="2"]
 

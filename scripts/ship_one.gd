@@ -95,7 +95,7 @@ func change_health(amount):
 	
 
 func destruct():
-	emit_signal("death", "and it exploded...", 5)
+	emit_signal("death", "and it exploded...", 4)
 	stop_engine()
 	release_grapple()
 	

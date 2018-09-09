@@ -16,15 +16,13 @@ var spawned = []
 
 
 func _ready():
-	if not Engine.is_editor_hint():
-		generate = true
+	if not Engine.is_editor_hint():	generate = true
 		
 		
 func _process(delta):
 
 	if generate:
 		generate = false
-	    
 		parse_json_spawnables()
 		remove_children([$interactables, $antagonists, $destructables, $actors])
 		spawned = []
